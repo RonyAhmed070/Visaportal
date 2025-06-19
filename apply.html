@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Tourist Visa - Visa Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            padding-top: 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e3e9f7 100%);
+            color: var(--text-color);
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        .status-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .card {
+            border: none;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .country-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+        }
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .card-img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .country-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .flag-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 24px;
+            margin-right: 12px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        .flag-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .flag-divider {
+            flex-grow: 1;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 0 12px;
+        }
+        .card-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 0.75rem;
+            font-weight: 500;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #4f8cff 0%, #38c6ff 100%);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #38c6ff 0%, #4f8cff 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(80, 180, 255, 0.2);
+        }
+        .visa-info {
+            background: rgba(255,255,255,0.9);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .visa-info i {
+            color: var(--secondary-color);
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        footer {
+            margin-top: auto;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: white;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            .status-container {
+                margin: 1rem auto;
+            }
+            .card-img-container {
+                height: 180px;
+            }
+            .visa-info {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+        /* Add these new styles for the nav flags */
+        .nav-flag {
+            width: 30px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 5px;
+            vertical-align: middle;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-passport me-2"></i>Visa Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="apply.html">Apply for Visa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="check.html">Check Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">Job Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tourist Visa Application Section -->
+    <div class="container py-5">
+        <div class="status-container">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-5">Apply for Tourist Visa</h2>
+                    
+                    <!-- Visa Information -->
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <div class="visa-info">
+                                <i class="fas fa-clock"></i>
+                                <strong>Processing Time:</strong> 5-15 business days
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="visa-info">
+                                <i class="fas fa-file-alt"></i>
+                                <strong>Required Documents:</strong> Passport, Photos, Bank Statement
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="visa-info">
+                                <i class="fas fa-globe"></i>
+                                <strong>Visa Type:</strong> Tourist Visa
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <!-- Saudi Arabia -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Saudi Arabia.jpg" class="card-img-top" alt="Saudi Arabia">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_Saudi_Arabia.png" class="flag-icon" alt="Saudi Arabia Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Saudi Arabia
+                                    </h5>
+                                    <p class="card-text">Apply for your Saudi visa through the official portal.</p>
+                                    <a href="https://visa.mofa.gov.sa/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UAE -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/UAE.jpg" class="card-img-top" alt="UAE">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/UAE Flag.jpg" class="flag-icon" alt="UAE Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        UAE
+                                    </h5>
+                                    <p class="card-text">Apply for your UAE visa online.</p>
+                                    <a href="https://www.icp.gov.ae/en/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turkey -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Turkey.jpg" class="card-img-top" alt="Turkey">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Turkey Flag.png" class="flag-icon" alt="Turkey Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Turkey
+                                    </h5>
+                                    <p class="card-text">Apply for your Turkey visa online.</p>
+                                    <a href="https://www.evisa.gov.tr/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thailand -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Thailand.jpg" class="card-img-top" alt="Thailand">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Thailand Flag.jpg" class="flag-icon" alt="Thailand Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Thailand
+                                    </h5>
+                                    <p class="card-text">Apply for your Thailand visa online.</p>
+                                    <a href="https://www.immigration.go.th/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Malaysia -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Malaysia.jpg" class="card-img-top" alt="Malaysia">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_Malaysia.png" class="flag-icon" alt="Malaysia Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Malaysia
+                                    </h5>
+                                    <p class="card-text">Apply for your Malaysia visa online.</p>
+                                    <a href="https://www.imi.gov.my/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Singapore -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Singapore.jpg" class="card-img-top" alt="Singapore">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_Singapore.png" class="flag-icon" alt="Singapore Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Singapore
+                                    </h5>
+                                    <p class="card-text">Apply for your Singapore visa online.</p>
+                                    <a href="https://www.ica.gov.sg/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- India -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/India.jpg" class="card-img-top" alt="India">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_India.png" class="flag-icon" alt="India Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        India
+                                    </h5>
+                                    <p class="card-text">Apply for your India visa online.</p>
+                                    <a href="https://indianvisaonline.gov.in/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- China -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/China.jpg" class="card-img-top" alt="China">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_China.png" class="flag-icon" alt="China Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        China
+                                    </h5>
+                                    <p class="card-text">Apply for your China visa online.</p>
+                                    <a href="https://www.visaforchina.org/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Qatar -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Qatar.jpg" class="card-img-top" alt="Qatar">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_Qatar.png" class="flag-icon" alt="Qatar Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Qatar
+                                    </h5>
+                                    <p class="card-text">Apply for your Qatar visa online.</p>
+                                    <a href="https://portal.www.gov.qa/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kuwait -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Kuwait.jpg" class="card-img-top" alt="Kuwait">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_Kuwait.png" class="flag-icon" alt="Kuwait Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Kuwait
+                                    </h5>
+                                    <p class="card-text">Apply for your Kuwait visa online.</p>
+                                    <a href="https://evisa.moi.gov.kw/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Oman -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Oman.jpg" class="card-img-top" alt="Oman">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Oman Flag.png" class="flag-icon" alt="Oman Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Oman
+                                    </h5>
+                                    <p class="card-text">Apply for your Oman visa online.</p>
+                                    <a href="https://evisa.rop.gov.om/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bahrain -->
+                        <div class="col-md-4">
+                            <div class="card h-100 country-card">
+                                <div class="card-img-container">
+                                    <img src="images/Bahrain.jpg" class="card-img-top" alt="Bahrain">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <div class="flag-container">
+                                            <img src="flags/Flag_of_Bahrain.png" class="flag-icon" alt="Bahrain Flag">
+                                        </div>
+                                        <div class="flag-divider"></div>
+                                        Bahrain
+                                    </h5>
+                                    <p class="card-text">Apply for your Bahrain visa online.</p>
+                                    <a href="https://www.evisa.gov.bh/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Visa Portal</h5>
+                    <p>Your trusted partner for visa applications and travel documentation.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="apply.html" class="text-white">Apply for Visa</a></li>
+                        <li><a href="check.html" class="text-white">Check Status</a></li>
+                        <li><a href="about.html" class="text-white">About</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><span style='font-size:1.2em;'>📞</span> <b>+8801650294202</b></li>
+                        <li><span style='font-size:1.2em;'>📞</span> <b>+8809638491460</b></li>
+                        <li><span style='font-size:1.2em;'>📧</span> <b>Imonhossin490@gmail.com</b></li>
+                        <li><span style='font-size:1.2em;'>📍</span> <b>70/D, Purana Paltan, Dhaka, Bangladesh</b></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Visa Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

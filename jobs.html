@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Find Your Dream Job</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --accent-color: #0dcaf0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            padding-top: 76px; /* Add padding for fixed navbar */
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: white !important;
+            border-bottom: 2px solid white;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/pattern.png');
+            opacity: 0.1;
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        .search-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: -4rem;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .job-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .job-meta-item i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .job-tag {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .filter-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-check {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .pagination {
+            margin-top: 2rem;
+        }
+
+        .page-link {
+            color: var(--primary-color);
+            border: none;
+            margin: 0 0.25rem;
+            border-radius: 5px;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .page-link:hover {
+            background-color: #e9ecef;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .job-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+
+        .error-message {
+            display: none;
+            color: var(--danger-color);
+            text-align: center;
+            padding: 1.25rem;
+            background: #fee2e2;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid #fecaca;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid #e5e7eb;
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .apply-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-item i {
+            width: 20px;
+        }
+
+        .job-details {
+            padding: 1rem;
+        }
+
+        .job-details h5 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-badge {
+            background: #e3e9f7;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .view-details-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-passport me-2"></i>Visa Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apply.html">Apply for Visa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="check.html">Check Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="jobs.html">Job Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold mb-3">Find Your Dream Job</h1>
+                    <p class="lead mb-3">Discover thousands of job opportunities with top companies around the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Box -->
+    <div class="container">
+        <div class="search-box">
+            <form id="jobSearchForm" onsubmit="return handleSearch(event)">
+                <div class="row g-3">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-muted" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" 
+                                   placeholder="Job title, keywords, or company"
+                                   aria-label="Search jobs"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-map-marker-alt text-muted" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" 
+                                   placeholder="City, state, or country"
+                                   aria-label="Location">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <span class="d-none d-md-inline">Search</span>
+                            <i class="fas fa-search d-md-none" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="container">
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Active Jobs</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">5K+</div>
+                        <div class="stat-label">Companies</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Job Seekers</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading and Error States -->
+    <div class="container">
+        <div id="loadingSpinner" class="loading-spinner" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div id="errorMessage" class="error-message" role="alert"></div>
+        <div id="noResults" class="no-results">
+            <i class="fas fa-search"></i>
+            <h3>No jobs found</h3>
+            <p class="text-muted">Try adjusting your search criteria</p>
+        </div>
+    </div>
+
+    <!-- Job Listings Section -->
+    <section class="job-listings py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Filters</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Job Type</label>
+                                    <select class="form-select" id="jobTypeFilter">
+                                        <option value="">All Types</option>
+                                        <option value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                        <option value="Contract">Contract</option>
+                                        <option value="Remote">Remote</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Experience Level</label>
+                                    <select class="form-select" id="experienceFilter">
+                                        <option value="">All Levels</option>
+                                        <option value="Entry Level">Entry Level</option>
+                                        <option value="Mid Level">Mid Level</option>
+                                        <option value="Senior Level">Senior Level</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="locationFilter" placeholder="Enter location">
+                                </div>
+                                <button type="button" class="btn btn-primary w-100" onclick="filterJobs()">Apply Filters</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Cards -->
+                <div class="col-lg-9">
+                    <div id="jobList" class="row">
+                        <!-- Jobs will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Application Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Apply for <span id="jobTitle"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="applicationForm" class="needs-validation" novalidate>
+                        <input type="hidden" id="jobId" name="jobId">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone *</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Location</label>
+                                <input type="text" class="form-control" name="location">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Cover Letter *</label>
+                                <textarea class="form-control" name="coverLetter" rows="4" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Resume/CV *</label>
+                                <input type="file" class="form-control" name="resume" accept=".pdf,.doc,.docx" required>
+                                <small class="text-muted">Accepted formats: PDF, DOC, DOCX (Max size: 2MB)</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Portfolio URL</label>
+                                <input type="url" class="form-control" name="portfolio">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">LinkedIn Profile</label>
+                                <input type="url" class="form-control" name="linkedin">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="submitApplication()">Submit Application</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Details Modal -->
+    <div class="modal fade" id="jobDetailsModal" tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jobDetailsModalLabel">Job Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="job-details-header mb-4">
+                        <div class="d-flex align-items-center">
+                            <img id="jobCompanyLogo" src="" alt="Company Logo" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                            <div>
+                                <h4 id="jobDetailsTitle" class="mb-1"></h4>
+                                <p id="jobDetailsCompany" class="text-muted mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p><i class="fas fa-map-marker-alt me-2"></i> <span id="jobDetailsLocation"></span></p>
+                            <p><i class="fas fa-briefcase me-2"></i> <span id="jobDetailsType"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><i class="fas fa-money-bill-wave me-2"></i> <span id="jobDetailsSalary"></span></p>
+                            <p><i class="fas fa-clock me-2"></i> <span id="jobDetailsExperience"></span></p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Job Description</h5>
+                        <p id="jobDetailsDescription"></p>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Required Skills</h5>
+                        <div id="jobDetailsSkills" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+                    <div class="mb-4">
+                        <h5>About Company</h5>
+                        <p id="jobDetailsCompanyInfo"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="openApplyModal()">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Visa Portal. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-decoration-none text-muted me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-muted me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none text-muted me-3">Contact Us</a>
+                    <a href="admin-login.html" class="text-decoration-none text-muted">Admin Login</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sample job data for testing
+        const jobs = [
+            {
+                id: 1,
+                title: "Senior Software Engineer",
+                company: "Tech Solutions Inc.",
+                companyLogo: "images/company1.png",
+                location: "New York, NY",
+                type: "Full-time",
+                salary: "$120,000 - $150,000",
+                experience: "5+ years",
+                description: "We are looking for a Senior Software Engineer to join our dynamic team. The ideal candidate will be responsible for developing high-quality software solutions and leading technical projects. You will work closely with cross-functional teams to deliver innovative products that meet business needs.",
+                skills: "JavaScript, React, Node.js, AWS, MongoDB",
+                companyInfo: "Tech Solutions Inc. is a leading technology company specializing in enterprise software solutions. We provide innovative products and services to clients worldwide.",
+                postedDate: "2024-03-15"
+            },
+            {
+                id: 2,
+                title: "UX/UI Designer",
+                company: "Creative Designs",
+                companyLogo: "images/company2.png",
+                location: "San Francisco, CA",
+                type: "Full-time",
+                salary: "$90,000 - $110,000",
+                experience: "3+ years",
+                description: "Join our creative team as a UX/UI Designer. You will be responsible for creating beautiful and intuitive user interfaces, conducting user research, and implementing design solutions that enhance user experience.",
+                skills: "Figma, Adobe XD, User Research, Prototyping, HTML/CSS",
+                companyInfo: "Creative Designs is a boutique design agency focused on creating exceptional digital experiences. We work with startups and established companies to bring their visions to life.",
+                postedDate: "2024-03-14"
+            }
+        ];
+
+        let currentJobId = null;
+
+        function displayJobs() {
+            const jobList = document.getElementById('jobList');
+            jobList.innerHTML = '';
+            
+            jobs.forEach(job => {
+                const card = document.createElement('div');
+                card.className = 'col-12 mb-4';
+                card.innerHTML = `
+                    <div class="job-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="${job.companyLogo || 'images/default-company.png'}" 
+                                     alt="${job.company}" 
+                                     class="company-logo me-3">
+                                <div>
+                                    <h3 class="job-title">${job.title}</h3>
+                                    <p class="company-name mb-0">${job.company}</p>
+                                </div>
+                            </div>
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${job.location}</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>${job.type}</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>${job.salary}</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>${job.experience}</span>
+                                </div>
+                            </div>
+                            <p class="text-muted">${job.description.substring(0, 150)}...</p>
+                            <div class="job-tags">
+                                ${job.skills.split(',').map(skill => `
+                                    <span class="job-tag">${skill.trim()}</span>
+                                `).join('')}
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-outline-primary" onclick="showJobDetails(${job.id})">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                jobList.appendChild(card);
+            });
+        }
+
+        function showJobDetails(jobId) {
+            const job = jobs.find(j => j.id === jobId);
+            if (!job) {
+                console.error('Job not found:', jobId);
+                return;
+            }
+
+            currentJobId = jobId;
+            
+            // Update modal content
+            document.getElementById('jobCompanyLogo').src = job.companyLogo || 'images/default-company.png';
+            document.getElementById('jobDetailsTitle').textContent = job.title;
+            document.getElementById('jobDetailsCompany').textContent = job.company;
+            document.getElementById('jobDetailsLocation').textContent = job.location;
+            document.getElementById('jobDetailsType').textContent = job.type;
+            document.getElementById('jobDetailsSalary').textContent = job.salary;
+            document.getElementById('jobDetailsExperience').textContent = job.experience;
+            document.getElementById('jobDetailsDescription').textContent = job.description;
+            document.getElementById('jobDetailsCompanyInfo').textContent = job.companyInfo || 'No company information available.';
+
+            // Update skills
+            const skillsContainer = document.getElementById('jobDetailsSkills');
+            skillsContainer.innerHTML = '';
+            job.skills.split(',').forEach(skill => {
+                const badge = document.createElement('span');
+                badge.className = 'badge bg-light text-dark';
+                badge.textContent = skill.trim();
+                skillsContainer.appendChild(badge);
+            });
+
+            // Show modal
+            const jobDetailsModal = new bootstrap.Modal(document.getElementById('jobDetailsModal'));
+            jobDetailsModal.show();
+        }
+
+        function filterJobs() {
+            const jobType = document.getElementById('jobTypeFilter').value;
+            const experience = document.getElementById('experienceFilter').value;
+            const location = document.getElementById('locationFilter').value.toLowerCase();
+
+            const filteredJobs = jobs.filter(job => {
+                const matchesType = !jobType || job.type === jobType;
+                const matchesExperience = !experience || job.experience.includes(experience);
+                const matchesLocation = !location || job.location.toLowerCase().includes(location);
+                return matchesType && matchesExperience && matchesLocation;
+            });
+
+            const jobList = document.getElementById('jobList');
+            jobList.innerHTML = '';
+            
+            if (filteredJobs.length === 0) {
+                jobList.innerHTML = `
+                    <div class="col-12 text-center">
+                        <p class="text-muted">No jobs found matching your criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredJobs.forEach(job => {
+                const card = document.createElement('div');
+                card.className = 'col-12 mb-4';
+                card.innerHTML = `
+                    <div class="job-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="${job.companyLogo || 'images/default-company.png'}" 
+                                     alt="${job.company}" 
+                                     class="company-logo me-3">
+                                <div>
+                                    <h3 class="job-title">${job.title}</h3>
+                                    <p class="company-name mb-0">${job.company}</p>
+                                </div>
+                            </div>
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${job.location}</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>${job.type}</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>${job.salary}</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>${job.experience}</span>
+                                </div>
+                            </div>
+                            <p class="text-muted">${job.description.substring(0, 150)}...</p>
+                            <div class="job-tags">
+                                ${job.skills.split(',').map(skill => `
+                                    <span class="job-tag">${skill.trim()}</span>
+                                `).join('')}
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-outline-primary" onclick="showJobDetails(${job.id})">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                jobList.appendChild(card);
+            });
+        }
+
+        function openApplyModal() {
+            if (!currentJobId) {
+                console.error('No job selected');
+                return;
+            }
+            
+            // Close job details modal
+            const jobDetailsModal = bootstrap.Modal.getInstance(document.getElementById('jobDetailsModal'));
+            if (jobDetailsModal) {
+                jobDetailsModal.hide();
+            }
+            
+            // Open apply modal
+            const job = jobs.find(j => j.id === currentJobId);
+            if (!job) {
+                console.error('Job not found:', currentJobId);
+                return;
+            }
+
+            document.getElementById('jobTitle').textContent = job.title;
+            document.getElementById('jobId').value = currentJobId;
+            
+            const modal = new bootstrap.Modal(document.getElementById('applyModal'));
+            modal.show();
+        }
+
+        function submitApplication() {
+            const form = document.getElementById('applicationForm');
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+
+            const formData = new FormData(form);
+            const application = {
+                id: Date.now(),
+                jobId: parseInt(formData.get('jobId')),
+                fullName: formData.get('fullName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                location: formData.get('location'),
+                coverLetter: formData.get('coverLetter'),
+                portfolio: formData.get('portfolio'),
+                linkedin: formData.get('linkedin'),
+                status: 'pending',
+                appliedDate: new Date().toISOString()
+            };
+
+            // Get existing applications or initialize empty array
+            let applications = JSON.parse(localStorage.getItem('applications') || '[]');
+            applications.push(application);
+            localStorage.setItem('applications', JSON.stringify(applications));
+
+            // Close modal and show success message
+            const applyModal = bootstrap.Modal.getInstance(document.getElementById('applyModal'));
+            if (applyModal) {
+                applyModal.hide();
+            }
+            
+            form.reset();
+            form.classList.remove('was-validated');
+
+            // Show success alert
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success alert-dismissible fade show';
+            alert.innerHTML = `
+                <strong>Success!</strong> Your application has been submitted.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.querySelector('.container').insertBefore(alert, document.querySelector('.row'));
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            displayJobs();
+        });
+    </script>
+</body>
+</html> 

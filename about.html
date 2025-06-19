@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Visa Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --accent-color: #0dcaf0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            padding-top: 76px;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .nav-link.active {
+            color: white !important;
+            border-bottom: 2px solid white;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/pattern.png');
+            opacity: 0.1;
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            font-size: 1.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .achievement-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            width: calc(50% - 30px);
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -40px;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-content::before {
+                left: -40px !important;
+            }
+        }
+
+        .section-padding {
+            padding: 3rem 0;
+        }
+
+        .bg-light {
+            background-color: #f8fafc !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-passport me-2"></i>Visa Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apply.html">Apply for Visa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="check.html">Check Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">Job Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-3">About Visa Portal</h1>
+                    <p class="lead mb-0">Your trusted partner in global mobility</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title">Our Story</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <p class="lead mb-3">Founded in 2020, Visa Portal has grown to become a leading platform for visa applications and job opportunities worldwide.</p>
+                    <p class="mb-0">We combine cutting-edge technology with personalized service to make your global journey seamless. Contact us at <a href="mailto:Imonhossin490@gmail.com">Imonhossin490@gmail.com</a> or call us at <a href="tel:+8801650294202">+8801650294202</a>.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/about-hero.jpg" alt="About Us" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Why Choose Us</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="h5 mb-3">Secure & Reliable</h4>
+                        <p class="mb-0">Your data is protected with enterprise-grade security measures and encryption protocols.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="h5 mb-3">Fast Processing</h4>
+                        <p class="mb-0">Our streamlined processes ensure quick turnaround times for all applications.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="h5 mb-3">24/7 Support</h4>
+                        <p class="mb-0">Our dedicated support team is available round the clock to assist you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title">Our Leadership Team</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="images/team1.jpg" alt="CEO">
+                        <h4 class="h5 mb-2">Md icon Hossain</h4>
+                        <p class="text-muted mb-0">Chief Executive Officer</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="images/team2.jpg" alt="CTO">
+                        <h4 class="h5 mb-2">Rony Ahmed</h4>
+                        <p class="text-muted mb-0">Chief Technology Officer</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="images/team3.jpg" alt="COO">
+                        <h4 class="h5 mb-2">Shawon Ahmed</h4>
+                        <p class="text-muted mb-0">Chief Operations Officer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Our Achievements</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="achievement-card">
+                        <div class="achievement-number">50K+</div>
+                        <p class="mb-0">Successful Applications</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="achievement-card">
+                        <div class="achievement-number">95%</div>
+                        <p class="mb-0">Success Rate</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="achievement-card">
+                        <div class="achievement-number">100+</div>
+                        <p class="mb-0">Countries Covered</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="achievement-card">
+                        <div class="achievement-number">24/7</div>
+                        <p class="mb-0">Customer Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4 class="h5 mb-2">2020</h4>
+                        <p class="mb-0">Founded with a vision to simplify global mobility</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4 class="h5 mb-2">2021</h4>
+                        <p class="mb-0">Expanded to 50+ countries and launched job portal</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4 class="h5 mb-2">2022</h4>
+                        <p class="mb-0">Achieved 95% success rate in visa applications</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4 class="h5 mb-2">2023</h4>
+                        <p class="mb-0">Launched AI-powered application processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Get in Touch</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="contact-info text-center">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4 class="h5 mb-3">Our Location</h4>
+                        <p class="mb-0">70/D, Purana Paltan<br>Dhaka, Bangladesh</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info text-center">
+                        <i class="fas fa-phone"></i>
+                        <h4 class="h5 mb-3">Phone Number</h4>
+                        <p class="mb-0">+8801650294202<br>+8809638491460</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info text-center">
+                        <i class="fas fa-envelope"></i>
+                        <h4 class="h5 mb-3">Email Address</h4>
+                        <p class="mb-0">Imonhossin490@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Visa Portal. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-decoration-none text-muted me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-muted me-3">Terms of Service</a>
+                    <a href="mailto:Imonhossin490@gmail.com" class="text-decoration-none text-muted">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
