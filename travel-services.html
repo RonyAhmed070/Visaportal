@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Services - Visa Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Premium Advanced Hero Styles */
+        .premium-hero {
+            padding: 2.5rem 0 1.5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .min-vh-50 {
+            min-height: 38vh;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .element-1 {
+            top: 10%;
+            left: 5%;
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        .element-2 {
+            bottom: 15%;
+            left: 3%;
+            animation: float-slow 10s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .pulse-container {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pulse-container i {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Smart Stats */
+        .smart-stat {
+            position: absolute;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-1 {
+            top: 12%;
+            right: 5%;
+            animation: float-slow 7s ease-in-out infinite;
+        }
+
+        .stat-2 {
+            bottom: 12%;
+            right: 12%;
+            animation: float-slow 8s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        .stat-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .stat-number {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: -3px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-right: 1rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: 5px 12px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            line-height: 1.2;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #38bdf8;
+            border-radius: 50%;
+            margin-right: 8px;
+            position: relative;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 18px;
+            opacity: 0.9;
+            max-width: 450px;
+        }
+
+        /* Hero Features - Fixed alignment */
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+            align-items: center;
+        }
+
+        .feature-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            border-radius: 50px;
+            padding: 5px 12px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            white-space: nowrap;
+            line-height: 1;
+            height: 28px;
+        }
+
+        .feature-icon {
+            color: #38bdf8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            font-size: 14px;
+            line-height: 1;
+            vertical-align: middle;
+            margin-bottom: 1px;
+        }
+
+        .feature-icon i {
+            display: inline-block;
+            line-height: 1;
+        }
+
+        /* Ensure proper vertical alignment of text */
+        .feature-item span {
+            line-height: 1;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .feature-text {
+            display: inline-block;
+            line-height: 1.2;
+            vertical-align: middle;
+        }
+        
+        /* Improved Nav Pills */
+        .nav-pills .nav-link {
+            border-radius: 12px;
+            padding: 0.6rem 1rem;
+            color: #64748b;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-pills .nav-link:hover:not(.active) {
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+        
+        .nav-pills .nav-link.active {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+        }
+        
+        .nav-pills .nav-link i {
+            font-size: 0.9rem;
+            margin-right: 0.2rem;
+        }
+        
+        /* Improved Pill Buttons */
+        .btn-outline-primary.pill {
+            border-radius: 50px;
+            border-color: #e2e8f0;
+            color: #64748b;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary.pill:hover:not(.active) {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #334155;
+        }
+        
+        .btn-outline-primary.pill.active {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+        }
+
+        /* Hero Actions - Fixed alignment */
+        .hero-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 0;
+            align-items: center;
+        }
+
+        .btn-hero-primary, 
+        .btn-hero-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            padding: 0 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(90deg, #38bdf8, #2563eb);
+            border: none;
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            gap: 8px;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        /* Hero Visual */
+        .hero-image-wrapper {
+            position: relative;
+            padding: 10px;
+        }
+
+        .hero-image-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(3deg);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .rating-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+            animation: fadeInDown 1s ease;
+        }
+
+        .rating-stars {
+            color: #f59e0b;
+            margin-bottom: 3px;
+            font-size: 0.8rem;
+        }
+
+        .rating-score {
+            font-weight: 700;
+            font-size: 16px;
+            color: #0f172a;
+        }
+
+        .rating-count {
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        .destination-tag {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .tag-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .tag-title {
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        .tag-subtitle {
+            font-weight: 700;
+            font-size: 12px;
+            color: #0f172a;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .premium-hero {
+                padding: 2rem 0 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-image-card {
+                margin-top: 1rem;
+                transform: none !important;
+            }
+            
+            .hero-image {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .premium-hero {
+                padding: 2rem 0 1rem;
+            }
+            
+            .min-vh-50 {
+                min-height: auto;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+                align-items: stretch;
+            }
+            
+            .hero-title {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            
+            .hero-description {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 0.9rem;
+            }
+            
+            .hero-image {
+                height: 200px;
+            }
+            
+            .hero-features {
+                justify-content: center;
+                gap: 8px;
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+            }
+            
+            .feature-item {
+                height: 26px;
+                padding: 4px 10px;
+            }
+            
+            .hero-badge {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+            }
+        }
+
+        /* Enhanced Modern Professional Hero Styles */
+        .travel-hero {
+            background: linear-gradient(135deg, #1c2c4c 0%, #2563eb 120%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            margin: 2rem auto 4rem;
+            border-radius: 28px;
+            box-shadow: 0 20px 70px rgba(37,99,235,0.25), 0 10px 20px rgba(37,99,235,0.15);
+            max-width: 1320px;
+            z-index: 1;
+            text-align: left;
+        }
+
+        .travel-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,50 L90,50 M50,10 L50,90" stroke="white" stroke-width="0.5" stroke-opacity="0.1" fill="none"/></svg>') center/40px 40px repeat;
+            opacity: 0.15;
+            animation: backgroundMove 40s linear infinite;
+            z-index: -1;
+        }
+        
+        .travel-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: 
+                radial-gradient(circle at right top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%),
+                radial-gradient(circle at left bottom, rgba(37,99,235,0.15) 0%, rgba(37,99,235,0) 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .travel-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .animated-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+
+        .animated-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.45s;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            animation: float 4s ease-in-out infinite;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateZ(0);
+        }
+
+        .floating-badge.badge-1 {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+            z-index: 3;
+            font-weight: 600;
+        }
+
+        .floating-badge.badge-2 {
+            bottom: 15%;
+            right: 8%;
+            animation-delay: 1.5s;
+            z-index: 3;
+            font-weight: 600;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .hero-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1);
+            margin: 0 auto;
+            max-width: 540px;
+            transform: perspective(1200px) rotateY(-5deg) rotateX(3deg) translateZ(0);
+            transition: all 0.5s ease;
+            will-change: transform;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1200px) rotateY(-2deg) rotateX(1deg) translateZ(0) scale(1.02);
+            box-shadow: 0 25px 65px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.15);
+        }
+
+        .btn-travel {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(37,99,235,0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-travel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37,99,235,0.4);
+            color: white;
+        }
+
+        .btn-outline-light {
+            border-width: 2px;
+            font-weight: 600;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-outline-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-outline-light:hover::before {
+            left: 0;
+        }
+
+        .highlight-feature {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 0.7rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 0.6rem;
+            margin-bottom: 0.6rem;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .highlight-feature:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .highlight-feature:hover::before {
+            left: 100%;
+        }
+        
+        .highlight-feature i {
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-feature:hover i {
+            transform: scale(1.2);
+        }
+
+        .hero-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            z-index: 3;
+            transform: rotate(3deg);
+            animation: pulse-tag 2s infinite ease-in-out;
+        }
+        
+        @keyframes pulse-tag {
+            0% { transform: rotate(3deg) scale(1); }
+            50% { transform: rotate(3deg) scale(1.05); }
+            100% { transform: rotate(3deg) scale(1); }
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .preloader .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card ul.feature-list {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(360deg);
+        }
+
+        .booking-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 0.2rem rgba(52,152,219,0.25);
+        }
+
+        .destination-card {
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+        }
+        
+        .destination-card .card-img-top {
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .destination-card .card-img-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0) 100%);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            padding-top: 80px;
+        }
+        
+        .destination-card:hover .card-img-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.1) 100%);
+            padding-bottom: 2rem;
+        }
+
+        .destination-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            color: white;
+            z-index: 2;
+        }
+
+        .destination-card:hover .destination-info {
+            padding-bottom: 2rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            border: 3px solid #3498db;
+        }
+
+        .rating {
+            color: #f1c40f;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li i {
+            color: #3498db;
+            margin-right: 1rem;
+        }
+
+        /* Modern Booking Form Styles */
+        .booking-form-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .booking-form-content.active-form {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Form floating improvements */
+        .form-floating > .form-control,
+        .form-floating > .form-select {
+            height: calc(3.5rem + 2px);
+            padding: 1rem 0.75rem;
+        }
+
+        .form-floating > .form-control:focus,
+        .form-floating > .form-select:focus {
+            padding-top: 1.625rem;
+            padding-bottom: 0.625rem;
+        }
+
+        .form-floating > label {
+            padding: 1rem 0.75rem;
+            color: #6c757d;
+        }
+        
+        .form-floating > label i {
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Button group styling */
+        .btn-check:checked + .btn-outline-primary {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(37,99,235,0.2);
+        }
+        
+        /* Added hover lift effect */
+        .hover-lift {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Testimonial improvements */
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Section title improvements */
+        .badge.bg-primary.bg-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%) !important;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .form-select, .form-control {
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+
+        .form-select:focus, .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 0.2rem rgba(52,152,219,0.25);
+        }
+
+        .form-check-input:checked {
+            background-color: #3498db;
+            border-color: #3498db;
+        }
+
+        /* Flight Path Styles */
+        .flight-path {
+            position: relative;
+            height: 2px;
+            background-color: #e0e0e0;
+            margin: 10px 0;
+        }
+
+        .flight-path::before,
+        .flight-path::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            top: -2px;
+        }
+
+        .flight-path::before {
+            left: 0;
+        }
+
+        .flight-path::after {
+            right: 0;
+        }
+
+        .flight-path i {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+            color: #3498db;
+        }
+
+        /* Search Results Styles */
+        #searchResultsModal .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        #searchResultsModal .modal-header {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px 15px 0 0;
+        }
+
+        #searchResultsModal .modal-body {
+            padding: 1.5rem;
+        }
+
+        #searchResultsModal .modal-footer {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 0 0 15px 15px;
+        }
+        
+        #loadingResults {
+            padding: 3rem 0;
+        }
+        
+        #loadingResults .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        @media (max-width: 991px) {
+            .travel-hero {
+                padding: 4rem 0 3rem;
+                margin: 1rem 1.5rem 2rem;
+                border-radius: 20px;
+            }
+            
+            .hero-image-container {
+                max-height: 320px;
+                margin-top: 2rem;
+                transform: perspective(1000px) rotateY(-3deg) rotateX(2deg) translateZ(0) !important;
+            }
+            
+            .floating-badge {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.95rem;
+            }
+            
+            .floating-badge.badge-1 {
+                top: 10%;
+                left: 5%;
+            }
+            
+            .floating-badge.badge-2 {
+                bottom: 10%;
+                right: 5%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .travel-hero {
+                padding: 3rem 0 2rem;
+                margin: 0.75rem 1rem 1.5rem;
+                border-radius: 16px;
+                text-align: center;
+            }
+            
+            .hero-image-container {
+                max-height: 250px;
+                margin: 2rem auto 0;
+                transform: none !important;
+            }
+            
+            .floating-badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .floating-badge.badge-1 {
+                top: 5%;
+                left: 5%;
+            }
+            
+            .floating-badge.badge-2 {
+                bottom: 5%;
+                right: 5%;
+            }
+            
+            .service-card {
+                margin-bottom: 1rem;
+            }
+            
+            .travel-hero .highlight-feature {
+                margin-bottom: 10px;
+                margin-right: 5px;
+            }
+            
+            .travel-hero .d-flex.flex-wrap {
+                justify-content: center;
+            }
+            
+            .form-floating > .form-control,
+            .form-floating > .form-select {
+                height: calc(3.1rem + 2px);
+                font-size: 0.9rem;
+            }
+
+            .form-floating > label {
+                padding: 0.8rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .btn-travel {
+                padding: 0.8rem 1.25rem;
+            }
+            
+            .booking-form {
+                padding: 1.5rem 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .destination-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .destination-card img {
+                height: 250px;
+            }
+            
+            .destination-info {
+                padding: 1.25rem;
+            }
+            
+            .destination-card:hover .destination-info {
+                padding-bottom: 1.5rem;
+            }
+            
+            .btn-travel.px-5 {
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+            }
+            
+            .hover-lift:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Modern Professional Navigation Bar */
+        .navbar-glass {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            border-radius: 0 0 22px 22px;
+            margin-bottom: 2rem;
+            padding: 0.7rem 0;
+            transition: background 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #2563eb !important;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #38c6ff;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            font-size: 1.08rem;
+            color: #2c3e50 !important;
+            border-radius: 12px;
+            margin: 0 0.25rem;
+            padding: 0.5rem 1.1rem;
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover, .navbar-nav .show > .nav-link {
+            color: #fff !important;
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            box-shadow: 0 2px 8px rgba(80, 180, 255, 0.10);
+        }
+        .dropdown-menu {
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+            border: none;
+            margin-top: 0.7rem;
+            animation: dropdownFade 0.22s cubic-bezier(.39,.575,.565,1);
+        }
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-item {
+            font-weight: 500;
+            border-radius: 10px;
+            margin: 0.1rem 0.2rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            color: #fff !important;
+        }
+        @media (max-width: 991.98px) {
+            .navbar-glass {
+                border-radius: 0 0 14px 14px;
+                margin-bottom: 1rem;
+            }
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+                padding: 0.7rem 1.2rem;
+            }
+        }
+
+        .hero-background-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1) 0%, rgba(0, 0, 0, 0) 70%),
+                        radial-gradient(circle at 80% 80%, rgba(79, 70, 229, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        @keyframes float-slow {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .feature-icon {
+            color: #38bdf8;
+        }
+
+        /* Animation classes */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .fade-in-right {
+            animation: fadeInRight 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-visual {
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-text {
+            display: inline-block;
+            line-height: 1.2;
+            vertical-align: middle;
+        }
+
+        /* Button text alignment */
+        .btn-hero-primary span, 
+        .btn-hero-secondary span {
+            line-height: 1.2;
+            vertical-align: middle;
+        }
+
+        .btn-hero-primary i {
+            font-size: 12px;
+            vertical-align: middle;
+            margin-top: 1px;
+        }
+
+        .btn-check + .btn-outline-primary {
+            border-color: #ddd;
+            color: #555;
+            padding: 0.6rem 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-check + .btn-outline-primary i {
+            font-size: 0.9rem;
+        }
+
+        .btn-check:checked + .btn-outline-primary {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(37,99,235,0.2);
+        }
+
+        /* Radio buttons alignment */
+        .form-check-inline {
+            margin-right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .form-check-input {
+            margin-top: 0;
+            margin-right: 0.5rem;
+        }
+
+        .form-check-label {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .d-flex.align-items-center.mb-2 {
+            padding-bottom: 0.5rem;
+        }
+
+        /* Why Choose Us cards */
+        .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-width: 4px !important;
+            transition: all 0.3s ease;
+        }
+
+        .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12) !important;
+        }
+
+        .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start .d-flex {
+            margin-bottom: 1rem !important;
+        }
+
+        .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start .mb-0 {
+            margin-top: auto;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 767.98px) {
+            .col-md-6 {
+                margin-bottom: 1rem;
+            }
+            
+            .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start {
+                padding: 1.25rem !important;
+            }
+            
+            .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start .d-flex {
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .p-4.bg-white.rounded-4.shadow-sm.h-100.border-start h4 {
+                font-size: 1.15rem;
+            }
+        }
+
+        .row.g-4 {
+            row-gap: 1.5rem !important;
+        }
+
+        .form-select {
+            height: auto;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+            background-position: right 0.75rem center;
+        }
+        
+        .form-floating .form-select {
+            padding-top: 1.625rem;
+            padding-bottom: 0.625rem;
+            height: calc(3.5rem + 2px);
+        }
+
+        /* Form specific styles for better alignment */
+        .form-floating > .form-control,
+        .form-floating > .form-select {
+            height: calc(3.5rem + 2px);
+            padding: 1rem 0.75rem;
+        }
+
+        .form-floating > .form-control:focus,
+        .form-floating > .form-select:focus {
+            padding-top: 1.625rem;
+            padding-bottom: 0.625rem;
+        }
+
+        .form-floating > label {
+            padding: 1rem 0.75rem;
+            color: #6c757d;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-floating > label i {
+            margin-right: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            text-align: center;
+        }
+
+        .form-check-inline {
+            margin-right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .form-check-input {
+            margin-top: 0;
+            margin-right: 0.5rem;
+        }
+        
+        /* Consistent spacing for booking forms */
+        .booking-form-content {
+            margin-top: 1rem;
+        }
+        
+        .booking-form .row.g-3 {
+            margin-bottom: 0;
+        }
+        
+        .booking-form .btn-travel {
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-check + .btn-outline-primary {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Modern Booking Form Styles */
+        .booking-form-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .booking-tabs .nav-tabs {
+            border-bottom: none;
+            background: #f8f9fa;
+        }
+        
+        .booking-tabs .nav-link {
+            border: none;
+            color: #495057;
+            font-weight: 600;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .booking-tabs .nav-link:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .booking-tabs .nav-link.active {
+            color: #3498db;
+            background-color: #fff;
+            border-top: 3px solid #3498db;
+        }
+        
+        .booking-content {
+            padding: 1.5rem;
+        }
+        
+        .trip-type-selector .btn-group {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .trip-type-selector .btn-outline-primary {
+            border-color: #dee2e6;
+            color: #495057;
+        }
+        
+        .trip-type-selector .btn-check:checked + .btn-outline-primary {
+            background-color: #3498db;
+            border-color: #3498db;
+            color: #fff;
+        }
+        
+        .input-group-text {
+            color: #3498db;
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(37,99,235,0.2);
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+        }
+        
+        /* Form specific styles for better mobile view */
+        @media (max-width: 767.98px) {
+            .booking-tabs .nav-link {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .booking-content {
+                padding: 1.25rem;
+            }
+            
+            /* Improve spacing on mobile */
+            .row.g-3 {
+                --bs-gutter-y: 0.75rem;
+            }
+            
+            .mb-3 {
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .mb-4 {
+                margin-bottom: 1.25rem !important;
+            }
+        }
+
+        .img-fluid.destination-img {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        /* Add this script to handle image loading errors */
+        @keyframes floatBadge {
+          0% { transform: translate(-12px, 18px); }
+          50% { transform: translate(-12px, 8px); }
+          100% { transform: translate(-12px, 18px); }
+        }
+        
+        @keyframes pulse {
+          0% { transform: translate(20%, -30%) scale(1); opacity: 0.1; }
+          50% { transform: translate(20%, -30%) scale(1.1); opacity: 0.15; }
+          100% { transform: translate(20%, -30%) scale(1); opacity: 0.1; }
+        }
+        
+        @keyframes float1 {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
+          100% { transform: translateY(0); }
+        }
+        
+        @keyframes float2 {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(15px); }
+          100% { transform: translateY(0); }
+        }
+        
+        .floating-badge-anim {
+          animation: floatBadge 3.5s ease-in-out infinite;
+        }
+        
+        /* Fix alignment in hero section */
+        .hero-section-modern .row {
+          align-items: center !important;
+        }
+        
+        /* Better vertical centering */
+        .hero-section-modern .col-lg-6 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        
+        /* Glassmorphism card effect */
+        .bg-white.bg-opacity-80 {
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive hero section adjustments */
+        @media (max-width: 991.98px) {
+          .hero-section-modern {
+            padding: 1rem 0 !important;
+          }
+          
+          .hero-section-modern .row {
+            flex-direction: column-reverse;
+          }
+          
+          .hero-section-modern .col-lg-6 {
+            width: 100%;
+            padding: 1.5rem 0;
+          }
+          
+          .hero-section-modern h1 {
+            font-size: 2rem !important;
+            text-align: center;
+          }
+          
+          .hero-section-modern p {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          
+          .hero-section-modern .d-inline-flex.rounded-pill.mb-3 {
+            margin-left: auto;
+            margin-right: auto;
+            display: flex !important;
+            justify-content: center;
+          }
+          
+          .hero-section-modern .d-flex.flex-wrap.gap-2.mb-4 {
+            justify-content: center;
+          }
+          
+          .hero-section-modern .btn {
+            margin: 0 auto;
+            display: flex;
+          }
+          
+          .hero-section-modern .rounded-4.overflow-hidden {
+            transform: none !important;
+            max-width: 400px;
+          }
+          
+          .hero-section-modern img {
+            height: 260px !important;
+          }
+          
+          /* Booking section responsive fixes */
+          .booking-section .row.g-3 {
+            margin-bottom: 1rem !important;
+          }
+          
+          .booking-section .d-flex.justify-content-end {
+            justify-content: flex-start !important;
+            margin-top: 0.5rem;
+          }
+          
+          .booking-section .btn-group {
+            width: 100%;
+          }
+          
+          .booking-section .btn-check + .btn {
+            flex: 1;
+          }
+        }
+        
+        @media (max-width: 767.98px) {
+          .hero-section-modern h1 {
+            font-size: 1.75rem !important;
+          }
+          
+          .hero-section-modern p {
+            font-size: 0.95rem !important;
+          }
+          
+          .hero-section-modern img {
+            height: 220px !important;
+          }
+          
+          .hero-section-modern .position-absolute[style*="width: 40px"] {
+            width: 32px !important;
+            height: 32px !important;
+          }
+          
+          .hero-section-modern .position-absolute[style*="width: 40px"] i {
+            font-size: 1rem !important;
+          }
+          
+          /* Booking section mobile fixes */
+          .booking-section .nav-pills {
+            gap: 0.25rem !important;
+          }
+          
+          .booking-section .nav-link {
+            padding: 0.4rem 0.5rem !important;
+            font-size: 0.85rem;
+          }
+          
+          .booking-section .nav-link i {
+            margin-right: 0.25rem !important;
+          }
+          
+          .booking-section .pill {
+            padding: 0.4rem 0.75rem !important;
+            font-size: 0.85rem;
+          }
+          
+          .booking-section .form-select,
+          .booking-section .form-control {
+            font-size: 0.9rem;
+          }
+          
+          .booking-section .btn-outline-secondary {
+            display: none;
+          }
+          
+          .booking-section .form-check-label {
+            font-size: 0.85rem;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Modern Professional Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-passport"></i>Visa Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="travelDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Travel
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="travelDropdown">
+                            <li><a class="dropdown-item active" href="travel-services.html">Travel Services</a></li>
+                            <li><a class="dropdown-item" href="apply.html">Apply for Visa</a></li>
+                            <li><a class="dropdown-item" href="check.html">Check Status</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">Job Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section-modern position-relative overflow-hidden" style="margin-top: 76px; padding: 1.5rem 0; background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 50%, #f8fafc 100%);">
+      <!-- Background Elements -->
+      <div class="position-absolute w-100 h-100" style="background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMzOGJkZjgiIG9wYWNpdHk9IjAuMDUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4='); opacity: 0.4; z-index: 0;"></div>
+      
+      <!-- Decorative Elements -->
+      <div class="position-absolute top-0 end-0" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, rgba(56,189,248,0) 70%); border-radius: 50%; transform: translate(30%, -30%); z-index: 0;"></div>
+      <div class="position-absolute bottom-0 start-0" style="width: 250px; height: 250px; background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, rgba(79,70,229,0) 70%); border-radius: 50%; transform: translate(-30%, 30%); z-index: 0;"></div>
+      
+      <div class="container position-relative" style="z-index:1;">
+        <div class="row align-items-center">
+          <!-- Left Content Column -->
+          <div class="col-lg-6 py-2">
+            <div class="pe-lg-4">
+              <!-- Badge -->
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill mb-2 animated-element active delay-1" style="background-color: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2);">
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; background: linear-gradient(135deg, #38bdf8, #0284c7);">
+                  <i class="fas fa-bolt text-white" style="font-size: 0.7rem;"></i>
+                </div>
+                <span style="color: #0284c7; font-weight: 600; font-size: 0.85rem;">Trusted by 10K+ travelers</span>
+              </div>
+              
+              <!-- Heading -->
+              <h1 class="fw-bold mb-2 animate__animated animate__fadeInUp" style="font-size: 2.2rem; line-height: 1.1; color: #0f172a; letter-spacing: -0.02em;">
+                Book <span style="background: linear-gradient(90deg, #0284c7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Flights & Hotels</span> with Confidence
+              </h1>
+              
+              <!-- Description -->
+              <p class="mb-3 animate__animated animate__fadeInUp" style="color: #475569; font-size: 1rem; line-height: 1.5; max-width: 520px;">
+                Find the best deals on flights and hotels worldwide with our secure booking platform.
+              </p>
+              
+              <!-- Features -->
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill" style="background-color: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.05);">
+                  <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.8rem;"></i>
+                  <span style="color: #334155; font-weight: 500; font-size: 0.85rem;">Best Price Guarantee</span>
+                </div>
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill" style="background-color: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.05);">
+                  <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.8rem;"></i>
+                  <span style="color: #334155; font-weight: 500; font-size: 0.85rem;">24/7 Support</span>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <a href="#booking" class="btn px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 animate__animated animate__fadeInUp" style="background: linear-gradient(90deg, #0284c7, #38bdf8); color: #fff; border-radius: 0.5rem; font-size: 0.95rem; box-shadow: 0 10px 25px -5px rgba(56,189,248,0.4);">
+                Search Now <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Right Image Column -->
+          <div class="col-lg-6 py-2">
+            <div class="position-relative">
+              <!-- Decorative Elements -->
+              <div class="position-absolute" style="top: 10%; right: 15%; width: 40px; height: 40px; background-color: rgba(255,255,255,0.7); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; animation: float1 6s ease-in-out infinite;">
+                <i class="fas fa-plane" style="color: #0284c7; font-size: 1.2rem;"></i>
+              </div>
+              <div class="position-absolute" style="bottom: 15%; left: 10%; width: 40px; height: 40px; background-color: rgba(255,255,255,0.7); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; animation: float2 7s ease-in-out infinite;">
+                <i class="fas fa-hotel" style="color: #0284c7; font-size: 1.2rem;"></i>
+              </div>
+              
+              <!-- Main Image with Card Effect -->
+              <div class="rounded-4 overflow-hidden position-relative mx-auto" style="max-width: 480px; box-shadow: 0 20px 60px -20px rgba(0,0,0,0.25); transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); transition: all 0.5s ease;">
+                <img src="https://img.freepik.com/free-photo/tourist-with-backpack-taking-photo-with-smartphone_23-2147839895.jpg" alt="Tourist taking photos during travel" class="img-fluid w-100" style="height: 280px; object-fit: cover;">
+                
+                <!-- Stats Badge -->
+                <div class="position-absolute top-0 end-0 m-3 px-3 py-2 rounded-3 d-flex align-items-center gap-2" style="background-color: rgba(255,255,255,0.9); backdrop-filter: blur(4px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; background: linear-gradient(135deg, #f59e0b, #f97316);">
+                    <i class="fas fa-star text-white" style="font-size: 0.9rem;"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 1.1rem; line-height: 1; color: #0f172a;">4.9/5</div>
+                    <div style="font-size: 0.75rem; color: #64748b;">Based on 10K+ reviews</div>
+                  </div>
+                </div>
+                
+                <!-- Destination Badge -->
+                <div class="position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-3 d-flex align-items-center gap-2 floating-badge-anim" style="background-color: rgba(255,255,255,0.9); backdrop-filter: blur(4px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; background: linear-gradient(135deg, #38bdf8, #0284c7);">
+                    <i class="fas fa-map-marker-alt text-white" style="font-size: 0.9rem;"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: #64748b;">Popular Destination</div>
+                    <div style="font-weight: 700; font-size: 0.9rem; line-height: 1; color: #0f172a;">Santorini, Greece</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modern Professional Booking Section -->
+          <section id="booking" class="booking-section py-5" style="background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 50%, #f8fafc 100%); border-bottom: 1px solid rgba(0,0,0,0.05); width: 100%; margin: 0; min-height: 80vh; display: flex; align-items: center;">
+      <div class="container">
+        <div class="flight-booking-card shadow-lg rounded-4 p-0 bg-white w-100 mx-auto overflow-hidden" style="backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+          <!-- Top Tab Bar -->
+          <div class="booking-header p-4 bg-gradient" style="background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);">
+            <h3 class="text-white text-center mb-0 fw-bold">Book Your Perfect Trip</h3>
+          </div>
+          
+          <div class="p-4 p-lg-5">
+            <ul class="nav nav-pills nav-fill mb-4 gap-2" style="background: rgba(248, 250, 252, 0.8); border-radius: 16px; padding: 0.6rem;">
+              <li class="nav-item"><a class="nav-link active d-flex align-items-center justify-content-center gap-2" href="#flightTab" data-bs-toggle="tab"><i class="fas fa-plane"></i>Flight</a></li>
+              <li class="nav-item"><a class="nav-link d-flex align-items-center justify-content-center gap-2" href="#hotelTab" data-bs-toggle="tab"><i class="fas fa-hotel"></i>Hotel</a></li>
+              <li class="nav-item"><a class="nav-link d-flex align-items-center justify-content-center gap-2" href="#packageTab" data-bs-toggle="tab"><i class="fas fa-suitcase"></i>Packages</a></li>
+              <li class="nav-item"><a class="nav-link d-flex align-items-center justify-content-center gap-2" href="#carTab" data-bs-toggle="tab"><i class="fas fa-car"></i>Car Rental</a></li>
+              <li class="nav-item"><a class="nav-link d-flex align-items-center justify-content-center gap-2" href="#visaTab" data-bs-toggle="tab"><i class="fas fa-passport"></i>Visa</a></li>
+            </ul>
+            
+            <!-- Tab Content -->
+            <div class="tab-content">
+              <!-- Flight Tab -->
+              <div class="tab-pane fade show active" id="flightTab">
+                <!-- Trip Type Pills -->
+                <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center">
+                  <button type="button" class="btn btn-outline-primary pill px-4 py-2" style="font-size: 1rem;" data-value="oneWay">
+                    <i class="fas fa-long-arrow-alt-right me-2"></i> One Way
+                  </button>
+                  <button type="button" class="btn btn-outline-primary pill active px-4 py-2" style="font-size: 1rem;" data-value="roundTrip">
+                    <i class="fas fa-exchange-alt me-2"></i> Round Trip
+                  </button>
+                  <button type="button" class="btn btn-outline-primary pill px-4 py-2" style="font-size: 1rem;" data-value="multiCity">
+                    <i class="fas fa-route me-2"></i> Multi City
+                  </button>
+                  <input type="hidden" name="tripType" id="tripTypeInput" value="roundTrip">
+                </div>
+                
+                <!-- Booking Form Row -->
+                <form id="flightBookingForm" class="booking-glass-form">
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6 col-lg-4">
+                      <label class="form-label fw-semibold text-primary mb-2">From</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-plane-departure text-primary"></i></span>
+                        <input type="text" class="form-control border-start-0 py-3" id="fromCity" placeholder="City or Airport" list="airports" value="Dhaka - DAC">
+                        <datalist id="airports">
+                          <option value="Dhaka - DAC">
+                          <option value="New York - JFK">
+                          <option value="London - LHR">
+                          <option value="Dubai - DXB">
+                          <option value="Singapore - SIN">
+                          <option value="Tokyo - HND">
+                          <option value="Paris - CDG">
+                        </datalist>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-auto d-flex align-items-center justify-content-center mt-4">
+                      <button type="button" class="btn btn-light rounded-circle p-0 d-flex align-items-center justify-content-center shadow-sm" id="swapCities" style="width: 48px; height: 48px; border: 2px solid #e2e8f0; background: white;">
+                        <i class="fas fa-exchange-alt text-primary"></i>
+                      </button>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                      <label class="form-label fw-semibold text-primary mb-2">To</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-plane-arrival text-primary"></i></span>
+                        <input type="text" class="form-control border-start-0 py-3" id="toCity" placeholder="City or Airport" list="airports" value="Cox's Bazar - CXB">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 position-relative">
+                      <label class="form-label fw-semibold text-primary mb-2">Departure</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-calendar-alt text-primary"></i></span>
+                        <input type="date" class="form-control border-start-0 py-3" id="departDate" value="2025-06-26">
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                      <label class="form-label fw-semibold text-primary mb-2">Return</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-calendar-check text-primary"></i></span>
+                        <input type="date" class="form-control border-start-0 py-3" id="returnDate" value="2025-07-03">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row g-3 mb-4 align-items-center">
+                    <div class="col-md-6 col-lg-3">
+                      <label class="form-label fw-semibold text-primary mb-2">Travelers</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-user text-primary"></i></span>
+                        <select class="form-select border-start-0 py-3" id="passengers">
+                          <option value="1">1 Adult</option>
+                          <option value="2">2 Adults</option>
+                          <option value="3">3 Adults</option>
+                          <option value="4">4 Adults</option>
+                          <option value="5+">5+ Adults</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                      <label class="form-label fw-semibold text-primary mb-2">Class</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-chair text-primary"></i></span>
+                        <select class="form-select border-start-0 py-3" id="cabinClass">
+                          <option value="economy">Economy</option>
+                          <option value="premium">Premium Economy</option>
+                          <option value="business">Business</option>
+                          <option value="first">First</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                      <label class="form-label fw-semibold text-primary mb-2">Fare Type</label>
+                      <div class="fare-type-selector">
+                        <input type="radio" class="btn-check" name="fareType" id="regularFare" value="regular" checked autocomplete="off">
+                        <label class="btn btn-outline-primary py-3" for="regularFare"><i class="fas fa-ticket-alt me-2"></i>Regular</label>
+                        <input type="radio" class="btn-check" name="fareType" id="studentFare" value="student" autocomplete="off">
+                        <label class="btn btn-outline-primary py-3" for="studentFare"><i class="fas fa-graduation-cap me-2"></i>Student</label>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                      <div class="d-flex flex-column h-100">
+                        <label class="form-label fw-semibold text-primary mb-2">Options</label>
+                        <div class="form-check form-switch mb-3">
+                          <input class="form-check-input" type="checkbox" id="directFlightsOnly" style="width: 3rem; height: 1.5rem;">
+                          <label class="form-check-label fw-semibold" for="directFlightsOnly">Direct flights only</label>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary w-100 py-3" data-bs-toggle="collapse" data-bs-target="#advancedOptions">
+                          <i class="fas fa-sliders-h me-2"></i> More Options
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Advanced Options (collapsed by default) -->
+                  <div class="collapse mt-3" id="advancedOptions">
+                    <div class="card card-body border-0 bg-light rounded-4 py-4 px-4">
+                      <div class="row g-4">
+                        <div class="col-md-4">
+                          <label class="form-label fw-semibold">Preferred Airlines</label>
+                          <select class="form-select form-select-lg py-3" multiple size="3">
+                            <option>Emirates</option>
+                            <option>Qatar Airways</option>
+                            <option>Singapore Airlines</option>
+                            <option>Biman Bangladesh</option>
+                            <option>Turkish Airlines</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4">
+                          <label class="form-label fw-semibold">Price Range</label>
+                          <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control py-3" placeholder="Min" min="0">
+                            <span class="input-group-text">-</span>
+                            <input type="number" class="form-control py-3" placeholder="Max" min="0">
+                          </div>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="refundableOnly" style="width: 3rem; height: 1.5rem;">
+                            <label class="form-check-label fw-semibold" for="refundableOnly">Refundable flights only</label>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <label class="form-label fw-semibold">Departure Time</label>
+                          <div class="d-flex flex-column gap-3">
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="morningDeparture" style="width: 3rem; height: 1.5rem;">
+                              <label class="form-check-label fw-semibold" for="morningDeparture">Morning (6AM - 12PM)</label>
+                            </div>
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="afternoonDeparture" style="width: 3rem; height: 1.5rem;">
+                              <label class="form-check-label fw-semibold" for="afternoonDeparture">Afternoon (12PM - 6PM)</label>
+                            </div>
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="eveningDeparture" style="width: 3rem; height: 1.5rem;">
+                              <label class="form-check-label fw-semibold" for="eveningDeparture">Evening (6PM - 12AM)</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-lg search-button py-3">
+                      <i class="fas fa-search me-2"></i> Search Flights
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+              <!-- Hotel Tab -->
+              <div class="tab-pane fade" id="hotelTab">
+                <form id="hotelBookingForm" class="booking-glass-form">
+                  <div class="row g-4 mb-4">
+                    <div class="col-md-12 col-lg-5">
+                      <label class="form-label fw-semibold text-primary mb-2">Destination</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-map-marker-alt text-primary"></i></span>
+                        <input type="text" class="form-control border-start-0 py-3" placeholder="City or Hotel name">
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                      <label class="form-label fw-semibold text-primary mb-2">Check-in</label>
+                      <input type="date" class="form-control form-control-lg py-3" value="2025-06-26">
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                      <label class="form-label fw-semibold text-primary mb-2">Check-out</label>
+                      <input type="date" class="form-control form-control-lg py-3" value="2025-07-03">
+                    </div>
+                  </div>
+                  
+                  <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                      <label class="form-label fw-semibold text-primary mb-2">Rooms</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-door-open text-primary"></i></span>
+                        <select class="form-select border-start-0 py-3">
+                          <option>1 Room</option>
+                          <option>2 Rooms</option>
+                          <option>3 Rooms</option>
+                          <option>4+ Rooms</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label fw-semibold text-primary mb-2">Guests</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-white border-end-0"><i class="fas fa-users text-primary"></i></span>
+                        <select class="form-select border-start-0 py-3">
+                          <option>1 Adult</option>
+                          <option>2 Adults</option>
+                          <option>2 Adults, 1 Child</option>
+                          <option>2 Adults, 2 Children</option>
+                          <option>Custom</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label fw-semibold text-primary mb-2">Hotel Class</label>
+                      <div class="hotel-class-selector">
+                        <input type="checkbox" class="btn-check" id="star3" autocomplete="off">
+                        <label class="btn btn-outline-warning py-3" for="star3">3★</label>
+                        <input type="checkbox" class="btn-check" id="star4" autocomplete="off">
+                        <label class="btn btn-outline-warning py-3" for="star4">4★</label>
+                        <input type="checkbox" class="btn-check" id="star5" autocomplete="off">
+                        <label class="btn btn-outline-warning py-3" for="star5">5★</label>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-lg search-button py-3">
+                      <i class="fas fa-search me-2"></i> Search Hotels
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+              <!-- Other tabs -->
+              <div class="tab-pane fade" id="packageTab">
+                <div class="p-5 text-center">
+                  <i class="fas fa-suitcase fa-4x text-primary mb-4"></i>
+                  <h4 class="mb-3 fw-bold">Travel Packages</h4>
+                  <p class="text-muted mb-4 fs-5">Find the best vacation packages to popular destinations.</p>
+                  <button class="btn btn-lg search-button py-3 px-5">Browse Packages</button>
+                </div>
+              </div>
+              
+              <div class="tab-pane fade" id="carTab">
+                <div class="p-5 text-center">
+                  <i class="fas fa-car fa-4x text-primary mb-4"></i>
+                  <h4 class="mb-3 fw-bold">Car Rental</h4>
+                  <p class="text-muted mb-4 fs-5">Rent a car for your trip at competitive prices.</p>
+                  <button class="btn btn-lg search-button py-3 px-5">Find Cars</button>
+                </div>
+              </div>
+              
+              <div class="tab-pane fade" id="visaTab">
+                <div class="p-5 text-center">
+                  <i class="fas fa-passport fa-4x text-primary mb-4"></i>
+                  <h4 class="mb-3 fw-bold">Visa Services</h4>
+                  <p class="text-muted mb-4 fs-5">Get assistance with visa applications for your travel.</p>
+                  <button class="btn btn-lg search-button py-3 px-5">Explore Visa Services</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary bg-gradient px-3 py-2 rounded-pill mb-3">Our Services</span>
+                <h2 class="display-5 fw-bold">Comprehensive Travel Solutions</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">We offer a wide range of travel services tailored to meet your specific needs and preferences.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="mb-3 rounded-3 overflow-hidden">
+                            <img src="https://img.freepik.com/free-photo/passenger-airplane-flying-above-clouds_335224-585.jpg" alt="Flight Booking" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
+                        </div>
+                        <h3 class="mb-3">Flight Booking</h3>
+                        <p class="text-muted mb-4">Find the best deals on flights worldwide. We partner with major airlines to offer competitive prices.</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="fas fa-check-circle"></i> 24/7 flight support</li>
+                            <li><i class="fas fa-check-circle"></i> Price match guarantee</li>
+                            <li><i class="fas fa-check-circle"></i> Flexible booking options</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline-primary rounded-pill px-4">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <div class="mb-3 rounded-3 overflow-hidden">
+                            <img src="https://img.freepik.com/free-photo/luxury-bedroom-hotel_1150-10836.jpg" alt="Hotel Accommodation" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
+                        </div>
+                        <h3 class="mb-3">Hotel Accommodation</h3>
+                        <p class="text-muted mb-4">Book from our curated selection of hotels, resorts, and apartments worldwide.</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="fas fa-check-circle"></i> Best price guarantee</li>
+                            <li><i class="fas fa-check-circle"></i> Free cancellation</li>
+                            <li><i class="fas fa-check-circle"></i> Verified reviews</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline-primary rounded-pill px-4">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="mb-3 rounded-3 overflow-hidden">
+                            <img src="https://img.freepik.com/free-photo/airport-terminal-with-passengers_23-2149128813.jpg" alt="Airport Transfer" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
+                        </div>
+                        <h3 class="mb-3">Airport Transfer</h3>
+                        <p class="text-muted mb-4">Reliable and comfortable airport transfer services at your destination.</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="fas fa-check-circle"></i> Professional drivers</li>
+                            <li><i class="fas fa-check-circle"></i> Meet & greet service</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 support</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline-primary rounded-pill px-4">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-5 bg-light" id="why-choose-us">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary bg-gradient px-3 py-2 rounded-pill mb-3">Our Advantages</span>
+                <h2 class="display-5 fw-bold">Why Choose Us?</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">We provide exceptional travel services with benefits that set us apart</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-start border-primary border-4 hover-lift">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3 bg-primary bg-opacity-10 p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <i class="fas fa-shield-alt text-primary fa-lg"></i>
+                            </div>
+                            <h4 class="mb-0">Secure Booking</h4>
+                        </div>
+                        <p class="mb-0 text-muted">Your payments and personal information are always protected with bank-level security</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-start border-success border-4 hover-lift">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3 bg-success bg-opacity-10 p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <i class="fas fa-dollar-sign text-success fa-lg"></i>
+                            </div>
+                            <h4 class="mb-0">Best Prices</h4>
+                        </div>
+                        <p class="mb-0 text-muted">We guarantee the best rates and deals for your travel with our price match policy</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-start border-info border-4 hover-lift">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3 bg-info bg-opacity-10 p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <i class="fas fa-headset text-info fa-lg"></i>
+                            </div>
+                            <h4 class="mb-0">24/7 Support</h4>
+                        </div>
+                        <p class="mb-0 text-muted">Our travel experts are here to help you anytime, anywhere with dedicated support</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-start border-warning border-4 hover-lift">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3 bg-warning bg-opacity-10 p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <i class="fas fa-gift text-warning fa-lg"></i>
+                            </div>
+                            <h4 class="mb-0">Rewards Program</h4>
+                        </div>
+                        <p class="mb-0 text-muted">Earn points with every booking and get exclusive travel benefits and discounts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary bg-gradient px-3 py-2 rounded-pill mb-3">Explore</span>
+                <h2 class="display-5 fw-bold">Popular Destinations</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">Discover our most sought-after travel destinations with exclusive packages and deals</p>
+            </div>
+            
+            <!-- Travel Banner -->
+            <div class="position-relative rounded-4 overflow-hidden mb-5">
+                <img src="https://img.freepik.com/free-photo/tourist-sitting-viewpoint-koh-nangyuan-island-near-koh-tao-island-surat-thani-thailand_335224-1356.jpg" alt="Scenic travel destination" class="img-fluid w-100" style="height: 300px; object-fit: cover;">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center text-center" style="background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);">
+                    <div class="container">
+                        <h3 class="text-white fw-bold mb-2" style="font-size: 2.2rem;">Explore the World</h3>
+                        <p class="text-white mb-4 mx-auto" style="max-width: 600px; font-size: 1.1rem;">Discover breathtaking destinations and create unforgettable memories</p>
+                        <a href="#booking" class="btn btn-light px-4 py-2 rounded-pill fw-semibold">Start Your Journey</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow destination-card">
+                        <div class="position-relative">
+                            <img src="https://img.freepik.com/free-photo/dubai-marina_158595-2000.jpg" class="card-img-top" alt="Dubai" style="height: 300px; object-fit: cover;">
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <span class="badge bg-danger px-3 py-2 rounded-pill">Popular</span>
+                            </div>
+                            <div class="card-img-overlay d-flex align-items-end">
+                                <div class="text-white w-100">
+                                    <h3 class="fw-bold mb-1">Dubai</h3>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-map-marker-alt me-2 text-warning"></i>
+                                        <span>United Arab Emirates</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-tag me-2 text-info"></i>
+                                            <span class="fw-bold">Starting from $699</span>
+                                        </div>
+                                        <a href="#booking" class="btn btn-sm btn-light rounded-circle p-2 shadow-sm">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow destination-card">
+                        <div class="position-relative">
+                            <img src="https://img.freepik.com/free-photo/singapore-cityscape-twilight_335224-686.jpg" class="card-img-top" alt="Singapore" style="height: 300px; object-fit: cover;">
+                            <div class="card-img-overlay d-flex align-items-end">
+                                <div class="text-white w-100">
+                                    <h3 class="fw-bold mb-1">Singapore</h3>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-map-marker-alt me-2 text-warning"></i>
+                                        <span>Singapore</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-tag me-2 text-info"></i>
+                                            <span class="fw-bold">Starting from $799</span>
+                                        </div>
+                                        <a href="#booking" class="btn btn-sm btn-light rounded-circle p-2 shadow-sm">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow destination-card">
+                        <div class="position-relative">
+                            <img src="https://img.freepik.com/free-photo/petronas-twin-towers-kuala-lumpur-malaysia_335224-688.jpg" class="card-img-top" alt="Malaysia" style="height: 300px; object-fit: cover;">
+                            <div class="card-img-overlay d-flex align-items-end">
+                                <div class="text-white w-100">
+                                    <h3 class="fw-bold mb-1">Malaysia</h3>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-map-marker-alt me-2 text-warning"></i>
+                                        <span>Kuala Lumpur</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-tag me-2 text-info"></i>
+                                            <span class="fw-bold">Starting from $599</span>
+                                        </div>
+                                        <a href="#booking" class="btn btn-sm btn-light rounded-circle p-2 shadow-sm">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="apply.html" class="btn btn-travel px-5 py-3 rounded-pill">
+                    <span class="d-inline-flex align-items-center">
+                        <span class="me-2">View All Destinations</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary bg-gradient px-3 py-2 rounded-pill mb-3">Testimonials</span>
+                <h2 class="display-5 fw-bold">What Our Clients Say</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 700px;">Hear from travelers who have experienced our services</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 order-lg-2">
+                    <div class="position-relative">
+                        <div class="rounded-4 overflow-hidden shadow-lg">
+                            <img src="https://img.freepik.com/free-photo/young-woman-enjoying-vacation-beach_23-2149155230.jpg" alt="Happy traveler" class="img-fluid w-100" style="height: 450px; object-fit: cover;">
+                        </div>
+                        <div class="position-absolute bottom-0 end-0 translate-middle-x mb-n4">
+                            <div class="bg-white p-3 rounded-4 shadow-lg d-inline-block">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-2">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                    <span class="fw-bold">4.9/5 rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 order-lg-1">
+                    <div class="testimonial-slider">
+                        <div class="testimonial-item bg-white p-4 rounded-4 shadow-sm mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="rounded-circle me-3" width="60">
+                                <div>
+                                    <h5 class="mb-0">Sarah Johnson</h5>
+                                    <p class="text-muted mb-0">Dubai Trip, UAE</p>
+                                </div>
+                                <div class="ms-auto">
+                                    <i class="fas fa-quote-right fa-2x text-primary opacity-25"></i>
+                                </div>
+                            </div>
+                            <p class="mb-0">The service was exceptional from start to finish. Our flight and hotel bookings were seamless, and the local tours they arranged for us in Dubai were amazing. Will definitely book with them again!</p>
+                        </div>
+                        <div class="testimonial-item bg-white p-4 rounded-4 shadow-sm">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-circle me-3" width="60">
+                                <div>
+                                    <h5 class="mb-0">Michael Chen</h5>
+                                    <p class="text-muted mb-0">Singapore Tour</p>
+                                </div>
+                                <div class="ms-auto">
+                                    <i class="fas fa-quote-right fa-2x text-primary opacity-25"></i>
+                                </div>
+                            </div>
+                            <p class="mb-0">I was impressed by the attention to detail and personalized service. The team went above and beyond to accommodate our special requests during our Singapore trip. Highly recommended!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Modal -->
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-labelledby="searchResultsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchResultsModalLabel">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Search Results Container -->
+                    <div id="searchResultsContainer">
+                        <div class="text-center py-5" id="loadingResults">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <div class="mt-3">Searching for the best options...</div>
+                        </div>
+                        <div id="resultsContent"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Your trusted partner in travel services, making your journey memorable and hassle-free.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Flight Booking</a></li>
+                        <li><a href="#" class="text-white">Hotel Booking</a></li>
+                        <li><a href="#" class="text-white">Airport Transfer</a></li>
+                        <li><a href="#" class="text-white">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> +880 1650-294202</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@visaportal.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 70/D, Purana Paltan, Dhaka</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Visa Portal Travel Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/travel.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+            
+            // Activate animated elements
+            setTimeout(() => {
+                document.querySelectorAll('.animated-element').forEach(el => {
+                    el.classList.add('active');
+                });
+            }, 100);
+
+            // Add animation to SVG elements
+            const heroSvg = document.querySelector('.hero-section-modern svg');
+            if (heroSvg) {
+                heroSvg.style.animation = 'pulse 3s infinite alternate ease-in-out';
+            }
+            
+            // 3D hover effect for hero image
+            const heroImageCard = document.querySelector('.hero-section-modern .rounded-4.overflow-hidden');
+            if (heroImageCard && window.innerWidth > 991) {
+                const container = heroImageCard.parentElement;
+                
+                container.addEventListener('mousemove', function(e) {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const xRotation = ((y - rect.height / 2) / rect.height) * 8;
+                    const yRotation = ((x - rect.width / 2) / rect.width) * -8;
+                    
+                    heroImageCard.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                container.addEventListener('mouseout', function() {
+                    heroImageCard.style.transform = 'perspective(1000px) rotateX(2deg) rotateY(-5deg) scale3d(1, 1, 1)';
+                });
+            }
+
+            // Image fallback handler for travel-related images
+            const travelFallbackImages = {
+                flight: [
+                    'https://img.freepik.com/free-photo/passenger-airplane-flying-above-clouds_335224-585.jpg',
+                    'https://img.freepik.com/free-photo/airplane-flying-cloudy-sky_23-2148996244.jpg',
+                    'https://img.freepik.com/free-photo/airplane-flying-sunset-sky_23-2148973517.jpg'
+                ],
+                hotel: [
+                    'https://img.freepik.com/free-photo/luxury-bedroom-hotel_1150-10836.jpg',
+                    'https://img.freepik.com/free-photo/beautiful-luxury-outdoor-swimming-pool-hotel-resort_74190-7433.jpg',
+                    'https://img.freepik.com/free-photo/hotel-reception-desk-with-bell_23-2148157068.jpg'
+                ],
+                car: [
+                    'https://img.freepik.com/free-photo/chauffeur-standing-by-car-airport-arrival-terminal_23-2149213507.jpg',
+                    'https://img.freepik.com/free-photo/tourist-with-luggage-airport-terminal_23-2149093096.jpg',
+                    'https://img.freepik.com/free-photo/business-man-getting-taxi-airport_23-2149080514.jpg',
+                    'https://img.freepik.com/free-photo/black-luxury-sedan-car-driving-highway_114579-4060.jpg'
+                ],
+                destination: [
+                    'https://img.freepik.com/free-photo/dubai-marina_158595-2000.jpg',
+                    'https://img.freepik.com/free-photo/singapore-cityscape-twilight_335224-686.jpg',
+                    'https://img.freepik.com/free-photo/petronas-twin-towers-kuala-lumpur-malaysia_335224-688.jpg',
+                    'https://img.freepik.com/free-photo/beautiful-tropical-beach-sea_74190-6772.jpg',
+                    'https://img.freepik.com/free-photo/beautiful-shot-eiffel-tower-paris-france_181624-45079.jpg',
+                    'https://img.freepik.com/free-photo/tourist-sitting-viewpoint-koh-nangyuan-island-near-koh-tao-island-surat-thani-thailand_335224-1356.jpg'
+                ],
+                testimonial: [
+                    'https://img.freepik.com/free-photo/young-woman-enjoying-vacation-beach_23-2149155230.jpg',
+                    'https://img.freepik.com/free-photo/full-shot-travel-concept-with-landmarks_23-2149153258.jpg',
+                    'https://img.freepik.com/free-photo/woman-taking-photos-with-camera-while-traveling_23-2149153262.jpg'
+                ],
+                traveler: [
+                    'https://img.freepik.com/free-photo/tourist-with-backpack-taking-photo-with-smartphone_23-2147839895.jpg',
+                    'https://img.freepik.com/free-photo/woman-taking-photo-mountains_23-2148273032.jpg',
+                    'https://img.freepik.com/free-photo/woman-with-hat-sitting-boat-looking-mountains-ratchaprapha-dam-khao-sok-national-park-surat-thani-province-thailand_335224-849.jpg',
+                    'https://img.freepik.com/free-photo/full-shot-woman-travel-concept_23-2149153267.jpg'
+                ]
+            };
+
+            // Handle image loading errors
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    // Determine image type based on alt text or parent class
+                    let imageType = 'destination'; // Default fallback category
+                    
+                    if (this.alt.toLowerCase().includes('flight') || this.closest('.service-card')?.querySelector('i.fa-plane')) {
+                        imageType = 'flight';
+                    } else if (this.alt.toLowerCase().includes('hotel') || this.closest('.service-card')?.querySelector('i.fa-hotel')) {
+                        imageType = 'hotel';
+                    } else if (this.alt.toLowerCase().includes('car') || this.alt.toLowerCase().includes('transfer') || this.closest('.service-card')?.querySelector('i.fa-car')) {
+                        imageType = 'car';
+                    } else if (this.closest('.testimonial-slider')) {
+                        imageType = 'testimonial';
+                    } else if (this.alt.toLowerCase().includes('tourist') || this.alt.toLowerCase().includes('traveler') || this.alt.toLowerCase().includes('taking photo')) {
+                        imageType = 'traveler';
+                    }
+                    
+                    // Get random fallback image from appropriate category
+                    const fallbackImages = travelFallbackImages[imageType];
+                    const randomIndex = Math.floor(Math.random() * fallbackImages.length);
+                    this.src = fallbackImages[randomIndex];
+                    
+                    console.log(`Image fallback applied: ${this.alt} → ${imageType} category`);
+                });
+            });
+        });
+
+        // Booking Form Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trip Type Pills
+            const pillButtons = document.querySelectorAll('.pill');
+            const returnDateField = document.querySelector('.return-date');
+            const tripTypeInput = document.getElementById('tripTypeInput');
+            
+            pillButtons.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    // Update active state
+                    pillButtons.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update hidden input
+                    const tripType = this.getAttribute('data-value');
+                    tripTypeInput.value = tripType;
+                    
+                    // Show/hide return date based on trip type
+                    if (tripType === 'roundTrip') {
+                        returnDateField.style.display = 'block';
+                    } else {
+                        returnDateField.style.display = 'none';
+                    }
+                });
+            });
+            
+            // City swap functionality
+            const swapButton = document.getElementById('swapCities');
+            const fromCity = document.getElementById('fromCity');
+            const toCity = document.getElementById('toCity');
+            
+            if (swapButton && fromCity && toCity) {
+                swapButton.addEventListener('click', function() {
+                    const temp = fromCity.value;
+                    fromCity.value = toCity.value;
+                    toCity.value = temp;
+                });
+            }
+            
+            // Set minimum dates for departure and return
+            const departDate = document.getElementById('departDate');
+            const returnDate = document.getElementById('returnDate');
+            
+            if (departDate && returnDate) {
+                // Set minimum date to today
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const dd = String(today.getDate()).padStart(2, '0');
+                const todayStr = `${yyyy}-${mm}-${dd}`;
+                
+                departDate.setAttribute('min', todayStr);
+                
+                // Set return date min to departure date
+                departDate.addEventListener('change', function() {
+                    returnDate.setAttribute('min', this.value);
+                    
+                    // If return date is before departure date, update it
+                    if (returnDate.value && returnDate.value < this.value) {
+                        returnDate.value = this.value;
+                    }
+                });
+            }
+            
+            // Passenger counter functionality
+            const passengerBtns = document.querySelectorAll('.passenger-btn');
+            const travelersText = document.getElementById('travelersText');
+            const applyTravelersBtn = document.getElementById('applyTravelers');
+            
+            if (passengerBtns.length && applyTravelersBtn) {
+                passengerBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const action = this.getAttribute('data-action');
+                        const target = this.getAttribute('data-target');
+                        const input = document.getElementById(`${target}Count`);
+                        
+                        if (input) {
+                            let value = parseInt(input.value);
+                            
+                            if (action === 'increase') {
+                                if (value < parseInt(input.getAttribute('max'))) {
+                                    input.value = value + 1;
+                                }
+                            } else if (action === 'decrease') {
+                                if (value > parseInt(input.getAttribute('min'))) {
+                                    input.value = value - 1;
+                                }
+                            }
+                        }
+                    });
+                });
+                
+                applyTravelersBtn.addEventListener('click', function() {
+                    const adults = document.getElementById('adultsCount').value;
+                    const children = document.getElementById('childrenCount').value;
+                    const infants = document.getElementById('infantsCount').value;
+                    
+                    let text = `${adults} Adult`;
+                    if (adults > 1) text += 's';
+                    
+                    if (children > 0) {
+                        text += `, ${children} Child`;
+                        if (children > 1) text += 'ren';
+                    }
+                    
+                    if (infants > 0) {
+                        text += `, ${infants} Infant`;
+                        if (infants > 1) text += 's';
+                    }
+                    
+                    travelersText.textContent = text;
+                });
+            }
+        });
+
+        // Form submission
+        document.getElementById('flightBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading modal
+            const searchModal = new bootstrap.Modal(document.getElementById('searchResultsModal'));
+            searchModal.show();
+            
+            // Simulate search delay
+            setTimeout(() => {
+                document.getElementById('loadingResults').style.display = 'none';
+                document.getElementById('resultsContent').innerHTML = `
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> 
+                        Search results would appear here in a real application.
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-0">Dhaka to Cox's Bazar</h5>
+                                            <small class="text-muted">One way · Economy · 1 traveler</small>
+                                        </div>
+                                        <span class="badge bg-success">Best Deal</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/40" alt="Airline" class="rounded me-2">
+                                            <div>
+                                                <strong>Biman Bangladesh</strong>
+                                                <div class="small text-muted">BG 437</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            <h4 class="mb-0 text-primary">$120</h4>
+                                            <small class="text-muted">per person</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }, 2000);
+        });
+    </script>
+</body>
+</html> 

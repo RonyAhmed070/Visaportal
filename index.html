@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Visa Portal - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -21,33 +24,73 @@
         main {
             flex: 1;
         }
-        .navbar {
-            background: rgba(255,255,255,0.7) !important;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 2px 16px 0 rgba(31, 38, 135, 0.07);
-            border-radius: 0 0 18px 18px;
-            margin-bottom: 1.5rem;
-            padding: 1rem 0;
+        .navbar-glass {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            border-radius: 0 0 22px 22px;
+            margin-bottom: 2rem;
+            padding: 0.7rem 0;
+            transition: background 0.3s;
         }
         .navbar-brand {
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #2563eb !important;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand i {
             font-size: 1.5rem;
-            color: #2c3e50 !important;
+            margin-right: 0.5rem;
+            color: #38c6ff;
         }
         .navbar-nav .nav-link {
             font-weight: 600;
             font-size: 1.08rem;
             color: #2c3e50 !important;
-            transition: color 0.2s, border-bottom 0.2s;
-            border-bottom: 2px solid transparent;
-            padding: 0.5rem 1rem;
-            margin: 0 0.2rem;
+            border-radius: 12px;
+            margin: 0 0.25rem;
+            padding: 0.5rem 1.1rem;
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
         }
-        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
-            color: #38c6ff !important;
-            border-bottom: 2px solid #38c6ff;
-            background: none;
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover, .navbar-nav .show > .nav-link {
+            color: #fff !important;
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            box-shadow: 0 2px 8px rgba(80, 180, 255, 0.10);
+        }
+        .dropdown-menu {
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+            border: none;
+            margin-top: 0.7rem;
+            animation: dropdownFade 0.22s cubic-bezier(.39,.575,.565,1);
+        }
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-item {
+            font-weight: 500;
+            border-radius: 10px;
+            margin: 0.1rem 0.2rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            color: #fff !important;
+        }
+        @media (max-width: 991.98px) {
+            .navbar-glass {
+                border-radius: 0 0 14px 14px;
+                margin-bottom: 1rem;
+            }
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+                padding: 0.7rem 1.2rem;
+            }
         }
         .hero-section {
             background: linear-gradient(120deg, #e3e9f7 0%, #f8fafc 100%);
@@ -204,14 +247,78 @@
                 margin-bottom: 1rem;
             }
         }
+        /* --- Our Leadership Team Section --- */
+        .leadership-section-bg {
+            background: linear-gradient(135deg, #f3f4f6 60%, #e0e7ef 100%);
+            padding: 3.5rem 0 3rem 0;
+        }
+        .leadership-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .leadership-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        .team-member-pro {
+            background: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(30,64,175,0.10);
+            padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+            text-align: center;
+            transition: box-shadow 0.18s, transform 0.18s;
+            border: 1.5px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+        }
+        .team-member-pro:hover {
+            box-shadow: 0 12px 32px 0 rgba(30,64,175,0.16);
+            transform: translateY(-6px) scale(1.03);
+        }
+        .team-member-pro img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 16px #2563eb22;
+            margin-bottom: 1.1rem;
+            background: #fff;
+        }
+        .team-member-pro .member-name {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 0.3rem;
+        }
+        .team-member-pro .member-role {
+            color: var(--primary-color);
+            font-size: 1.01rem;
+            font-weight: 500;
+            margin-bottom: 0;
+            letter-spacing: 0.01em;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <canvas id="background-canvas"></canvas>
+    <!-- Modern Professional Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-passport me-2"></i>Visa Portal
+                <i class="fas fa-passport"></i>Visa Portal
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -221,17 +328,21 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="apply.html">Apply for Visa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="check.html">Check Status</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="jobs.html">Job Portal</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="travelDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Travel
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="travelDropdown">
+                            <li><a class="dropdown-item" href="travel-services.html">Travel Services</a></li>
+                            <li><a class="dropdown-item" href="apply.html">Apply for Visa</a></li>
+                            <li><a class="dropdown-item" href="check.html">Check Status</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">Job Portal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
@@ -245,10 +356,13 @@
     <section class="hero">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 animate-fade-in">
-                    <h1>Your Journey Begins Here</h1>
-                    <p class="lead">Experience a seamless visa application process with our trusted platform. Fast, secure, and reliable service for all your travel needs.</p>
-                    <div class="d-flex gap-3">
+                <div class="col-lg-6">
+                    <h1 class="animate__animated animate__fadeInUp">Your Journey Begins Here</h1>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Experience a seamless visa application process with our trusted platform. Fast, secure, and reliable service for all your travel needs.</p>
+                    
+
+                    
+                    <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeInUp animate__delay-1s">
                         <a href="apply.html" class="btn btn-primary">
                             <i class="fas fa-paper-plane me-2"></i>Apply Now
                         </a>
@@ -257,21 +371,26 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-                         alt="Travel" class="img-fluid rounded-3 shadow-lg">
+                <div class="col-lg-6">
+                    <div class="hero-img-wrapper animate__animated animate__fadeInRight animate__delay-1s">
+                        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                             alt="Travel" class="img-fluid rounded-3 shadow-lg">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <!-- Features Section -->
-    <section class="py-5">
+    <section class="py-5 desktop-features">
         <div class="container">
             <h2 class="text-center mb-5">Why Choose Us</h2>
             <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card feature-card h-100">
+                <div class="col-md-3 animate-fade-in">
+                    <div class="card feature-card h-100 desktop-card">
                         <div class="feature-icon">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -279,8 +398,8 @@
                         <p>Quick and efficient visa processing to get you on your way sooner.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card feature-card h-100">
+                <div class="col-md-3 animate-fade-in">
+                    <div class="card feature-card h-100 desktop-card">
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -288,8 +407,8 @@
                         <p>Your data is protected with state-of-the-art security measures.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card feature-card h-100">
+                <div class="col-md-3 animate-fade-in">
+                    <div class="card feature-card h-100 desktop-card">
                         <div class="feature-icon">
                             <i class="fas fa-headset"></i>
                         </div>
@@ -297,8 +416,8 @@
                         <p>Round-the-clock assistance for all your visa-related queries.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card feature-card h-100">
+                <div class="col-md-3 animate-fade-in">
+                    <div class="card feature-card h-100 desktop-card">
                         <div class="feature-icon">
                             <i class="fas fa-globe"></i>
                         </div>
@@ -311,12 +430,12 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light desktop-how-it-works">
         <div class="container">
             <h2 class="text-center mb-5">How It Works</h2>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100">
+                <div class="col-md-4 animate-fade-in">
+                    <div class="card h-100 desktop-step-card">
                         <div class="card-body text-center">
                             <div class="display-4 text-primary mb-3">1</div>
                             <h4>Fill Application</h4>
@@ -324,8 +443,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
+                <div class="col-md-4 animate-fade-in">
+                    <div class="card h-100 desktop-step-card">
                         <div class="card-body text-center">
                             <div class="display-4 text-primary mb-3">2</div>
                             <h4>Submit Documents</h4>
@@ -333,8 +452,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
+                <div class="col-md-4 animate-fade-in">
+                    <div class="card h-100 desktop-step-card">
                         <div class="card-body text-center">
                             <div class="display-4 text-primary mb-3">3</div>
                             <h4>Get Your Visa</h4>
@@ -345,6 +464,140 @@
             </div>
         </div>
     </section>
+
+    <!-- Travel Services Section -->
+    <section class="travel-services-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">Our Travel Services</h2>
+            <p class="text-center mb-5 travel-subtitle">Explore our premium services designed to make your journey seamless and memorable</p>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="travel-card">
+                        <div class="travel-icon-wrapper">
+                            <div class="travel-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                        </div>
+                        <div class="travel-content">
+                            <h3 class="travel-title">Flight Booking</h3>
+                            <p class="travel-desc">Find the best deals on international flights with our comprehensive flight booking service. We partner with premium airlines to ensure your comfort.</p>
+                            <a href="travel-services.html#booking" class="travel-btn">
+                                <span>Book Flight</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="travel-card">
+                        <div class="travel-icon-wrapper">
+                            <div class="travel-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                        </div>
+                        <div class="travel-content">
+                            <h3 class="travel-title">Hotel Booking</h3>
+                            <p class="travel-desc">Book luxury hotels worldwide at competitive prices with our hotel reservation service. Enjoy exclusive amenities and priority check-in.</p>
+                            <a href="travel-services.html#booking" class="travel-btn">
+                                <span>Reserve Now</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="travel-card">
+                        <div class="travel-icon-wrapper">
+                            <div class="travel-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                        </div>
+                        <div class="travel-content">
+                            <h3 class="travel-title">Airport Transfer</h3>
+                            <p class="travel-desc">Enjoy comfortable and reliable airport transfer services at your destination with professional drivers and luxury vehicles.</p>
+                            <a href="travel-services.html#booking" class="travel-btn">
+                                <span>Reserve Transfer</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="travel-services.html" class="btn btn-primary btn-lg">
+                    <span>View All Services</span>
+                    <i class="fas fa-chevron-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+        <div class="travel-bg-pattern"></div>
+    </section>
+
+    <!-- Our Leadership Team Section -->
+    <section class="leadership-section-bg py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+            <h2 class="leadership-title">Our Leadership Team</h2>
+                <p class="leadership-subtitle">Meet the experts behind our exceptional service</p>
+                <div class="leadership-divider mx-auto"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="team-member-pro">
+                        <div class="member-img-wrapper">
+                        <img src="https://via.placeholder.com/500x500.jpg?text=CEO" alt="CEO">
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                        <div class="member-name">Md Imon Hossain</div>
+                        <div class="member-role">Chief Executive Officer</div>
+                            <p class="member-bio">With over 15 years of experience in the travel industry, Imon leads our company with vision and expertise.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="team-member-pro">
+                        <div class="member-img-wrapper">
+                        <img src="https://via.placeholder.com/500x500.jpg?text=CTO" alt="CTO">
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                        <div class="member-name">Rony Ahmed</div>
+                        <div class="member-role">Chief Technology Officer</div>
+                            <p class="member-bio">Rony brings innovative technological solutions to streamline our visa and travel services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="team-member-pro">
+                        <div class="member-img-wrapper">
+                        <img src="https://via.placeholder.com/500x500.jpg?text=COO" alt="COO">
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                        <div class="member-name">Shawon Ahmed</div>
+                        <div class="member-role">Chief Operations Officer</div>
+                            <p class="member-bio">Shawon ensures seamless operational excellence across all our service offerings worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leadership-bg-pattern"></div>
+    </section>
+    <!-- End Our Leadership Team Section -->
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-5">
@@ -357,20 +610,19 @@
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white">Home</a></li>
-                        <li><a href="apply.html" class="text-white">Apply for Visa</a></li>
-                        <li><a href="check.html" class="text-white">Check Status</a></li>
-                        <li><a href="about.html" class="text-white">About</a></li>
-                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="travel-services.html">Travel Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Contact Info</h5>
+                    <h5>Travel Services</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i>+8801650294202</li>
-                        <li><i class="fas fa-phone me-2"></i>+8809638491460</li>
-                        <li><i class="fas fa-envelope me-2"></i>Imonhossin490@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt me-2"></i>70/D, Purana Paltan, Dhaka, Bangladesh</li>
+                        <li><a href="travel-services.html#booking">Flight Booking</a></li>
+                        <li><a href="travel-services.html#booking">Hotel Booking</a></li>
+                        <li><a href="travel-services.html#booking">Airport Transfer</a></li>
+                        <li><a href="travel-services.html">Travel Packages</a></li>
                     </ul>
                 </div>
             </div>
@@ -383,5 +635,162 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/3a9f51530a.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Initialize animations when scrolled into view
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Add .animate__animated classes to elements when they come into view
+            function handleScrollAnimation() {
+                const animatedElements = document.querySelectorAll('.animate__animated');
+                
+                animatedElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        // Make sure the element has the animation class
+                        if (!element.classList.contains('animate__animated--visible')) {
+                            element.classList.add('animate__animated--visible');
+                        }
+                    }
+                });
+            }
+            
+            // Initial check on page load
+            handleScrollAnimation();
+            
+            // Check on scroll
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // Background Canvas Animation
+            const canvas = document.getElementById('background-canvas');
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+            
+            // Particle settings
+            const particleCount = 80;
+            const particleSize = 1.8;
+            const particleMinSpeed = 0.1;
+            const particleMaxSpeed = 0.5;
+            const particleColors = ['#3fa7f4', '#22304a', '#4b6cb7', '#182848'];
+            const connectionDistance = 180;
+            const connectionOpacity = 0.08;
+            
+            // Mouse interaction
+            let mouseX = 0;
+            let mouseY = 0;
+            let mouseRadius = 200;
+            
+            // Track mouse position
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Create particles
+            let particles = [];
+            
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: Math.random() * (particleMaxSpeed - particleMinSpeed) + particleMinSpeed,
+                        vy: Math.random() * (particleMaxSpeed - particleMinSpeed) + particleMinSpeed,
+                        size: Math.random() * particleSize + 1,
+                        color: particleColors[Math.floor(Math.random() * particleColors.length)],
+                        direction: Math.random() > 0.5 ? 1 : -1
+                    });
+                }
+            }
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, width, height);
+                
+                // Update and draw particles
+                for (let i = 0; i < particles.length; i++) {
+                    let p = particles[i];
+                    
+                    // Calculate distance from mouse
+                    let dx = mouseX - p.x;
+                    let dy = mouseY - p.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    // Apply mouse interaction
+                    if (distance < mouseRadius) {
+                        let force = (mouseRadius - distance) / mouseRadius;
+                        p.x -= dx * force * 0.03;
+                        p.y -= dy * force * 0.03;
+                    }
+                    
+                    // Move particles
+                    p.x += p.vx * p.direction;
+                    p.y += p.vy * p.direction;
+                    
+                    // Bounce off edges with smooth transition
+                    if (p.x < 0 || p.x > width) {
+                        p.direction *= -1;
+                        p.vx = Math.random() * (particleMaxSpeed - particleMinSpeed) + particleMinSpeed;
+                    }
+                    if (p.y < 0 || p.y > height) {
+                        p.direction *= -1;
+                        p.vy = Math.random() * (particleMaxSpeed - particleMinSpeed) + particleMinSpeed;
+                    }
+                    
+                    // Keep particles in bounds
+                    if (p.x < 0) p.x = 0;
+                    if (p.x > width) p.x = width;
+                    if (p.y < 0) p.y = 0;
+                    if (p.y > height) p.y = height;
+                    
+                    // Draw particle
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                    
+                    // Connect particles
+                    for (let j = i + 1; j < particles.length; j++) {
+                        let p2 = particles[j];
+                        let dx = p.x - p2.x;
+                        let dy = p.y - p2.y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < connectionDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(34, 48, 74, ${connectionOpacity * (1 - distance / connectionDistance)})`;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            // Handle window resize
+            function handleResize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                createParticles();
+            }
+            
+            window.addEventListener('resize', handleResize);
+            
+            // Initialize animation
+            createParticles();
+            animate();
+        });
+    </script>
 </body>
 </html> 

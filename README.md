@@ -1,146 +1,98 @@
-# Visa Portal Website
+# Visa Portal
 
-A modern, responsive website for visa applications and status tracking. Built with HTML, CSS, and JavaScript.
+A modern visa application portal built with Node.js, Express, and Bootstrap.
 
 ## Features
 
-- 🎨 Modern and Professional Design
-- 📱 Fully Responsive Layout
-- ✨ Smooth Animations and Transitions
-- 🔒 Secure Form Validation
-- 📝 Easy Visa Application Process
-- 🔍 Real-time Status Checking
-- 📱 Mobile-Friendly Navigation
-- 🎯 User-Friendly Interface
+- Modern, responsive design
+- User-friendly visa application process
+- Application status tracking
+- Admin dashboard
+- Contact form
+- Multi-country visa support
+- Interactive UI with smooth animations
 
-## Pages
+## Prerequisites
 
-1. **Home** (`index.html`)
-   - Welcome section
-   - Key features
-   - How it works
-   - Call-to-action buttons
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-2. **Apply for Visa** (`apply.html`)
-   - Step-by-step application form
-   - Document upload
-   - Form validation
-   - Secure submission
-
-3. **Check Status** (`check.html`)
-   - Application status checking
-   - Real-time updates
-   - Status notifications
-   - Help information
-
-4. **About** (`about.html`)
-   - Company information
-   - Mission and vision
-   - Team members
-   - Success stories
-
-5. **Contact** (`contact.html`)
-   - Contact form
-   - Office locations
-   - Support information
-   - FAQ section
-
-## Technologies Used
-
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- Bootstrap 5.3.0
-- Font Awesome 6.0.0
-- Google Fonts (Poppins)
-
-## Getting Started
+## Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/visa-portal.git
-   ```
+```bash
+git clone <repository-url>
+cd visa-portal
+```
 
-2. Open the project folder:
-   ```bash
-   cd visa-portal
-   ```
+2. Install dependencies:
+```bash
+npm install
+```
 
-3. Open `index.html` in your browser to view the website.
+3. Start the server:
+```bash
+npm start
+```
+
+For development with auto-reload:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:3000`
 
 ## Project Structure
 
 ```
 visa-portal/
-├── index.html          # Home page
-├── apply.html          # Visa application form
-├── check.html          # Status checking page
-├── about.html          # About page
-├── contact.html        # Contact page
 ├── css/
-│   └── style.css      # Custom styles
+│   └── style.css          # Main stylesheet
 ├── js/
-│   └── main.js        # JavaScript functionality
-└── README.md          # Project documentation
+│   └── main.js            # Client-side JavaScript
+├── images/                # Image assets
+├── flags/                 # Country flag images
+├── server.js             # Express server
+├── package.json          # Project dependencies
+└── *.html                # HTML pages
 ```
 
-## Features in Detail
+## API Endpoints
 
-### Modern Design
-- Clean and professional layout
-- Consistent color scheme
-- Smooth animations
-- Responsive typography
+- POST `/login` - User authentication
+- GET `/admin-dashboard` - Admin dashboard access
+- POST `/logout` - User logout
+- POST `/contact` - Contact form submission
+- POST `/apply` - Visa application submission
 
-### User Experience
-- Intuitive navigation
-- Clear call-to-action buttons
-- Form validation feedback
-- Status notifications
+## Security Features
 
-### Mobile Responsiveness
-- Adaptive layout
-- Touch-friendly interface
-- Optimized images
-- Mobile-first approach
-
-### Performance
-- Fast loading times
-- Optimized assets
-- Smooth animations
-- Efficient JavaScript
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Opera (latest)
+- CORS protection
+- Rate limiting
+- Security headers
+- XSS protection
+- Input validation
+- Error handling
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Contact
+## TODO
 
-- 📞 **Phone:** +8801650294202
-- 📧 **Email:** Imonhossin490@gmail.com
-- 📍 **Address:** 70/D, Purana partan Line, arial, Dhaka
-
-Project Link: [https://github.com/yourusername/visa-portal](https://github.com/yourusername/visa-portal)
-
-## Acknowledgments
-
-- Bootstrap for the responsive framework
-- Font Awesome for the icons
-- Google Fonts for the typography
-- Unsplash for the images 
+- [ ] Implement proper authentication system
+- [ ] Add email functionality for notifications
+- [ ] Implement proper session management
+- [ ] Add database integration
+- [ ] Add file upload functionality for documents
+- [ ] Implement proper application processing
+- [ ] Add user dashboard
+- [ ] Add payment integration 

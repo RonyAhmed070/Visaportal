@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Visa Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Learn more about Visa Portal, your trusted partner for visa applications and travel documentation.">
     <style>
         :root {
             --primary-color: #0d6efd;
@@ -243,14 +245,246 @@
         .bg-light {
             background-color: #f8fafc !important;
         }
+
+        /* --- Our Leadership Team Section --- */
+        .leadership-section-bg {
+            background: linear-gradient(135deg, #f3f4f6 60%, #e0e7ef 100%);
+            padding: 3.5rem 0 3rem 0;
+        }
+        .leadership-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .leadership-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        .team-member-pro {
+            background: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(30,64,175,0.10);
+            padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+            text-align: center;
+            transition: box-shadow 0.18s, transform 0.18s;
+            border: 1.5px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+        }
+        .team-member-pro:hover {
+            box-shadow: 0 12px 32px 0 rgba(30,64,175,0.16);
+            transform: translateY(-6px) scale(1.03);
+        }
+        .team-member-pro img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 16px #2563eb22;
+            margin-bottom: 1.1rem;
+            background: #fff;
+        }
+        .team-member-pro .member-name {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 0.3rem;
+        }
+        .team-member-pro .member-role {
+            color: var(--primary-color);
+            font-size: 1.01rem;
+            font-weight: 500;
+            margin-bottom: 0;
+            letter-spacing: 0.01em;
+        }
+
+        /* --- Clean Professional Contact Section --- */
+        .contact-section-pro {
+            background: linear-gradient(180deg, #fff 80%, #f3f4f6 100%);
+            padding: 4rem 0 3.5rem 0;
+        }
+        .contact-title-pro {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+            position: relative;
+            padding-bottom: 1.1rem;
+        }
+        .contact-title-pro::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        .contact-info-pro {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px 0 rgba(30,64,175,0.07);
+            padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+            text-align: center;
+            border: 1.5px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 220px;
+        }
+        .contact-info-pro .contact-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 1.7rem;
+            margin: 0 auto 1.1rem auto;
+        }
+        .contact-info-pro h4 {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+        .contact-info-pro p {
+            color: #475569;
+            font-size: 1.07rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        @media (min-width: 992px) {
+            .contact-section-pro .row.g-4 {
+                border-radius: 16px;
+                box-shadow: 0 1px 8px 0 rgba(30,64,175,0.04);
+                background: #fff;
+                padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                display: flex;
+                align-items: stretch;
+            }
+            .contact-info-pro:not(:last-child) {
+                border-right: 1.5px solid #e5e7eb;
+            }
+        }
+        @media (max-width: 768px) {
+            .contact-title-pro {
+                font-size: 1.4rem;
+                padding-bottom: 0.6rem;
+            }
+            .contact-title-pro::after {
+                width: 40px;
+                height: 2px;
+            }
+            .contact-info-pro {
+                padding: 1.1rem 0.7rem 1rem 0.7rem;
+                min-height: 0;
+            }
+            .contact-info-pro .contact-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                margin-bottom: 0.7rem;
+            }
+        }
+
+        /* Modern Professional Navigation Bar */
+        .navbar-glass {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            border-radius: 0 0 22px 22px;
+            margin-bottom: 2rem;
+            padding: 0.7rem 0;
+            transition: background 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #2563eb !important;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #38c6ff;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            font-size: 1.08rem;
+            color: #2c3e50 !important;
+            border-radius: 12px;
+            margin: 0 0.25rem;
+            padding: 0.5rem 1.1rem;
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover, .navbar-nav .show > .nav-link {
+            color: #fff !important;
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            box-shadow: 0 2px 8px rgba(80, 180, 255, 0.10);
+        }
+        .dropdown-menu {
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+            border: none;
+            margin-top: 0.7rem;
+            animation: dropdownFade 0.22s cubic-bezier(.39,.575,.565,1);
+        }
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-item {
+            font-weight: 500;
+            border-radius: 10px;
+            margin: 0.1rem 0.2rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            color: #fff !important;
+        }
+        @media (max-width: 991.98px) {
+            .navbar-glass {
+                border-radius: 0 0 14px 14px;
+                margin-bottom: 1rem;
+            }
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+                padding: 0.7rem 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <!-- Modern Professional Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-passport me-2"></i>Visa Portal
+                <i class="fas fa-passport"></i>Visa Portal
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -260,17 +494,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="apply.html">Apply for Visa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="check.html">Check Status</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="jobs.html">Job Portal</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="travelDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Travel
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="travelDropdown">
+                            <li><a class="dropdown-item" href="travel-services.html">Travel Services</a></li>
+                            <li><a class="dropdown-item" href="apply.html">Apply for Visa</a></li>
+                            <li><a class="dropdown-item" href="check.html">Check Status</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">Job Portal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
@@ -281,62 +519,65 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="padding: 1.5rem 0;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-5 fw-bold mb-3">About Visa Portal</h1>
-                    <p class="lead mb-0">Your trusted partner in global mobility</p>
+                    <h1 class="display-6 fw-bold mb-2 animate__animated animate__fadeIn">About Visa Portal</h1>
+                    <p class="lead mb-0 animate__animated animate__fadeInUp animate__delay-1s">Your trusted partner in global mobility</p>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <!-- Overview Section -->
-    <section class="section-padding">
+    <section class="section-padding" style="padding: 1.8rem 0;">
         <div class="container">
-            <h2 class="text-center section-title">Our Story</h2>
+            <h2 class="text-center section-title animate__animated animate__fadeIn">Our Story</h2>
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <p class="lead mb-3">Founded in 2020, Visa Portal has grown to become a leading platform for visa applications and job opportunities worldwide.</p>
+                <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                    <p class="lead mb-2">Founded in 2020, Visa Portal has grown to become a leading platform for visa applications and job opportunities worldwide.</p>
                     <p class="mb-0">We combine cutting-edge technology with personalized service to make your global journey seamless. Contact us at <a href="mailto:Imonhossin490@gmail.com">Imonhossin490@gmail.com</a> or call us at <a href="tel:+8801650294202">+8801650294202</a>.</p>
                 </div>
-                <div class="col-lg-6">
-                    <img src="images/about-hero.jpg" alt="About Us" class="img-fluid rounded shadow">
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <img src="images/Singapore.jpg" alt="About Us" class="img-fluid rounded shadow" style="height: 350px; object-fit: cover; width: 100%;">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section-padding bg-light">
+    <section class="section-padding bg-light" style="padding: 1.8rem 0;">
         <div class="container">
-            <h2 class="text-center section-title">Why Choose Us</h2>
-            <div class="row g-4">
+            <h2 class="text-center section-title animate__animated animate__fadeIn">Why Choose Us</h2>
+            <div class="row g-3">
                 <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s" style="padding: 1.2rem;">
+                        <div class="feature-icon" style="width: 45px; height: 45px;">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h4 class="h5 mb-3">Secure & Reliable</h4>
+                        <h4 class="h5 mb-2">Secure & Reliable</h4>
                         <p class="mb-0">Your data is protected with enterprise-grade security measures and encryption protocols.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-2s" style="padding: 1.2rem;">
+                        <div class="feature-icon" style="width: 45px; height: 45px;">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <h4 class="h5 mb-3">Fast Processing</h4>
+                        <h4 class="h5 mb-2">Fast Processing</h4>
                         <p class="mb-0">Our streamlined processes ensure quick turnaround times for all applications.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-3s" style="padding: 1.2rem;">
+                        <div class="feature-icon" style="width: 45px; height: 45px;">
                             <i class="fas fa-headset"></i>
                         </div>
-                        <h4 class="h5 mb-3">24/7 Support</h4>
+                        <h4 class="h5 mb-2">24/7 Support</h4>
                         <p class="mb-0">Our dedicated support team is available round the clock to assist you.</p>
                     </div>
                 </div>
@@ -345,61 +586,99 @@
     </section>
 
     <!-- Team Section -->
-    <section class="section-padding">
+    <section class="leadership-section-bg py-5">
         <div class="container">
-            <h2 class="text-center section-title">Our Leadership Team</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="team-member">
-                        <img src="images/team1.jpg" alt="CEO">
-                        <h4 class="h5 mb-2">Md icon Hossain</h4>
-                        <p class="text-muted mb-0">Chief Executive Officer</p>
+            <div class="text-center mb-5">
+            <h2 class="leadership-title">Our Leadership Team</h2>
+                <p class="leadership-subtitle">Meet the experts behind our exceptional service</p>
+                <div class="leadership-divider mx-auto"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="team-member-pro">
+                        <div class="member-img-wrapper">
+                            <img src="images/team1.jpg" alt="CEO"
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500?text=CEO'; this.style.objectFit='cover';">
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                        <div class="member-name">Md Imon Hossain</div>
+                        <div class="member-role">Chief Executive Officer</div>
+                            <p class="member-bio">With over 15 years of experience in the travel industry, Imon leads our company with vision and expertise.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="team-member">
-                        <img src="images/team2.jpg" alt="CTO">
-                        <h4 class="h5 mb-2">Rony Ahmed</h4>
-                        <p class="text-muted mb-0">Chief Technology Officer</p>
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="team-member-pro">
+                        <div class="member-img-wrapper">
+                            <img src="images/team2.jpg" alt="CTO"
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500?text=CTO'; this.style.objectFit='cover';">
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                        <div class="member-name">Rony Ahmed</div>
+                        <div class="member-role">Chief Technology Officer</div>
+                            <p class="member-bio">Rony brings innovative technological solutions to streamline our visa and travel services.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="team-member">
-                        <img src="images/team3.jpg" alt="COO">
-                        <h4 class="h5 mb-2">Shawon Ahmed</h4>
-                        <p class="text-muted mb-0">Chief Operations Officer</p>
+                <div class="col-lg-4 col-md-6 animate-fade-in">
+                    <div class="team-member-pro">
+                        <div class="member-img-wrapper">
+                            <img src="images/team3.jpg" alt="COO"
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500?text=COO'; this.style.objectFit='cover';">
+                            <div class="social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                        <div class="member-name">Shawon Ahmed</div>
+                        <div class="member-role">Chief Operations Officer</div>
+                            <p class="member-bio">Shawon ensures seamless operational excellence across all our service offerings worldwide.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="leadership-bg-pattern"></div>
     </section>
 
     <!-- Achievements Section -->
-    <section class="section-padding bg-light">
+    <section class="section-padding bg-light" style="padding: 1.8rem 0;">
         <div class="container">
-            <h2 class="text-center section-title">Our Achievements</h2>
-            <div class="row g-4">
+            <h2 class="text-center section-title animate__animated animate__fadeIn" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Our Achievements</h2>
+            <div class="row g-3">
                 <div class="col-md-3">
-                    <div class="achievement-card">
-                        <div class="achievement-number">50K+</div>
+                    <div class="achievement-card animate__animated animate__zoomIn animate__delay-1s" style="padding: 1rem;">
+                        <div class="achievement-number" style="font-size: 1.7rem;">50K+</div>
                         <p class="mb-0">Successful Applications</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="achievement-card">
-                        <div class="achievement-number">95%</div>
+                    <div class="achievement-card animate__animated animate__zoomIn animate__delay-2s" style="padding: 1rem;">
+                        <div class="achievement-number" style="font-size: 1.7rem;">95%</div>
                         <p class="mb-0">Success Rate</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="achievement-card">
-                        <div class="achievement-number">100+</div>
+                    <div class="achievement-card animate__animated animate__zoomIn animate__delay-3s" style="padding: 1rem;">
+                        <div class="achievement-number" style="font-size: 1.7rem;">100+</div>
                         <p class="mb-0">Countries Covered</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="achievement-card">
-                        <div class="achievement-number">24/7</div>
+                    <div class="achievement-card animate__animated animate__zoomIn animate__delay-4s" style="padding: 1rem;">
+                        <div class="achievement-number" style="font-size: 1.7rem;">24/7</div>
                         <p class="mb-0">Customer Support</p>
                     </div>
                 </div>
@@ -408,31 +687,31 @@
     </section>
 
     <!-- Timeline Section -->
-    <section class="section-padding">
+    <section class="section-padding" style="padding: 1.8rem 0;">
         <div class="container">
-            <h2 class="text-center section-title">Our Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="h5 mb-2">2020</h4>
+            <h2 class="text-center section-title animate__animated animate__fadeIn" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Our Journey</h2>
+            <div class="timeline" style="padding: 1.2rem 0;">
+                <div class="timeline-item" style="margin-bottom: 1.5rem;">
+                    <div class="timeline-content animate__animated animate__fadeInLeft animate__delay-1s" style="padding: 0.8rem;">
+                        <h4 class="h5 mb-1">2020</h4>
                         <p class="mb-0">Founded with a vision to simplify global mobility</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="h5 mb-2">2021</h4>
+                <div class="timeline-item" style="margin-bottom: 1.5rem;">
+                    <div class="timeline-content animate__animated animate__fadeInRight animate__delay-2s" style="padding: 0.8rem;">
+                        <h4 class="h5 mb-1">2021</h4>
                         <p class="mb-0">Expanded to 50+ countries and launched job portal</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="h5 mb-2">2022</h4>
+                <div class="timeline-item" style="margin-bottom: 1.5rem;">
+                    <div class="timeline-content animate__animated animate__fadeInLeft animate__delay-3s" style="padding: 0.8rem;">
+                        <h4 class="h5 mb-1">2022</h4>
                         <p class="mb-0">Achieved 95% success rate in visa applications</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4 class="h5 mb-2">2023</h4>
+                <div class="timeline-item" style="margin-bottom: 1.5rem;">
+                    <div class="timeline-content animate__animated animate__fadeInRight animate__delay-4s" style="padding: 0.8rem;">
+                        <h4 class="h5 mb-1">2023</h4>
                         <p class="mb-0">Launched AI-powered application processing</p>
                     </div>
                 </div>
@@ -441,51 +720,107 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section-padding bg-light">
+    <section class="contact-section-pro" style="padding: 2.5rem 0 2rem 0;">
         <div class="container">
-            <h2 class="text-center section-title">Get in Touch</h2>
-            <div class="row g-4">
+            <h2 class="contact-title-pro animate__animated animate__fadeIn" style="font-size: 1.8rem; margin-bottom: 1.8rem;">Get in Touch</h2>
+            <div class="row g-3">
                 <div class="col-md-4">
-                    <div class="contact-info text-center">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4 class="h5 mb-3">Our Location</h4>
-                        <p class="mb-0">70/D, Purana Paltan<br>Dhaka, Bangladesh</p>
+                    <div class="contact-info-pro animate__animated animate__fadeInUp animate__delay-1s" style="padding: 1.5rem 1rem; min-height: 180px;">
+                        <div class="contact-icon" style="width: 45px; height: 45px; font-size: 1.3rem;"><i class="fas fa-map-marker-alt"></i></div>
+                        <h4 style="font-size: 1.1rem;">Our Location</h4>
+                        <p>70/D, Purana Paltan<br>Dhaka, Bangladesh</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="contact-info text-center">
-                        <i class="fas fa-phone"></i>
-                        <h4 class="h5 mb-3">Phone Number</h4>
-                        <p class="mb-0">+8801650294202<br>+8809638491460</p>
+                    <div class="contact-info-pro animate__animated animate__fadeInUp animate__delay-2s" style="padding: 1.5rem 1rem; min-height: 180px;">
+                        <div class="contact-icon" style="width: 45px; height: 45px; font-size: 1.3rem;"><i class="fas fa-phone"></i></div>
+                        <h4 style="font-size: 1.1rem;">Phone Number</h4>
+                        <p>+8801650294202<br>+8809638491460</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="contact-info text-center">
-                        <i class="fas fa-envelope"></i>
-                        <h4 class="h5 mb-3">Email Address</h4>
-                        <p class="mb-0">Imonhossin490@gmail.com</p>
+                    <div class="contact-info-pro animate__animated animate__fadeInUp animate__delay-3s" style="padding: 1.5rem 1rem; min-height: 180px;">
+                        <div class="contact-icon" style="width: 45px; height: 45px; font-size: 1.3rem;"><i class="fas fa-envelope"></i></div>
+                        <h4 style="font-size: 1.1rem;">Email Address</h4>
+                        <p>Imonhossin490@gmail.com</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-light py-4">
+    <!-- Standardized Footer Start -->
+    <footer class="bg-dark text-white py-4 mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 Visa Portal. All rights reserved.</p>
+                <div class="col-md-4">
+                    <h5>Visa Portal</h5>
+                    <p>Your trusted partner for visa applications and travel documentation.</p>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="text-decoration-none text-muted me-3">Privacy Policy</a>
-                    <a href="#" class="text-decoration-none text-muted me-3">Terms of Service</a>
-                    <a href="mailto:Imonhossin490@gmail.com" class="text-decoration-none text-muted">Contact Us</a>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="apply.html" class="text-white">Apply for Visa</a></li>
+                        <li><a href="check.html" class="text-white">Check Status</a></li>
+                        <li><a href="jobs.html" class="text-white">Job Portal</a></li>
+                        <li><a href="about.html" class="text-white">About</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
                 </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><span style='font-size:1.2em;'>📞</span> <b>+8801650294202</b></li>
+                        <li><span style='font-size:1.2em;'>📞</span> <b>+8809638491460</b></li>
+                        <li><span style='font-size:1.2em;'>📧</span> <b>Imonhossin490@gmail.com</b></li>
+                        <li><span style='font-size:1.2em;'>📍</span> <b>70/D, Purana Paltan, Dhaka, Bangladesh</b></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Visa Portal. All rights reserved.</p>
             </div>
         </div>
     </footer>
+    <!-- Standardized Footer End -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/3a9f51530a.js" crossorigin="anonymous"></script>
+    <script>
+        // Initialize animations when scrolled into view
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Add .animate__animated classes to elements when they come into view
+            function handleScrollAnimation() {
+                const animatedElements = document.querySelectorAll('.animate__animated');
+                
+                animatedElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        // Make sure the element has the animation class
+                        if (!element.classList.contains('animate__animated--visible')) {
+                            element.classList.add('animate__animated--visible');
+                        }
+                    }
+                });
+            }
+            
+            // Initial check on page load
+            handleScrollAnimation();
+            
+            // Check on scroll
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
 </body>
 </html> 

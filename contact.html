@@ -7,13 +7,84 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Contact Visa Portal for visa application support and inquiries.">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <!-- Modern Professional Navigation Bar -->
+    <style>
+        .navbar-glass {
+            background: rgba(255,255,255,0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+            border-radius: 0 0 22px 22px;
+            margin-bottom: 2rem;
+            padding: 0.7rem 0;
+            transition: background 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #2563eb !important;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #38c6ff;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            font-size: 1.08rem;
+            color: #2c3e50 !important;
+            border-radius: 12px;
+            margin: 0 0.25rem;
+            padding: 0.5rem 1.1rem;
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover, .navbar-nav .show > .nav-link {
+            color: #fff !important;
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            box-shadow: 0 2px 8px rgba(80, 180, 255, 0.10);
+        }
+        .dropdown-menu {
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+            border: none;
+            margin-top: 0.7rem;
+            animation: dropdownFade 0.22s cubic-bezier(.39,.575,.565,1);
+        }
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-item {
+            font-weight: 500;
+            border-radius: 10px;
+            margin: 0.1rem 0.2rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
+            background: linear-gradient(90deg, #38c6ff 0%, #2563eb 100%);
+            color: #fff !important;
+        }
+        @media (max-width: 991.98px) {
+            .navbar-glass {
+                border-radius: 0 0 14px 14px;
+                margin-bottom: 1rem;
+            }
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+                padding: 0.7rem 1.2rem;
+            }
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-passport me-2"></i>Visa Portal
+                <i class="fas fa-passport"></i>Visa Portal
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -23,17 +94,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="apply.html">Apply for Visa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="check.html">Check Status</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="jobs.html">Job Portal</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="travelDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Travel
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="travelDropdown">
+                            <li><a class="dropdown-item" href="travel-services.html">Travel Services</a></li>
+                            <li><a class="dropdown-item" href="apply.html">Apply for Visa</a></li>
+                            <li><a class="dropdown-item" href="check.html">Check Status</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">Job Portal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="contact.html">Contact</a>
@@ -44,47 +119,55 @@
     </nav>
 
     <!-- Contact Section -->
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h1 class="text-center mb-5">Contact Us</h1>
-
-                <!-- Contact Form -->
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <h2 class="card-title mb-4">Send us a Message</h2>
-                        <form id="contactForm" class="needs-validation" novalidate>
+    <section class="contact-smart-section py-5 position-relative">
+        <div class="smart-bg-svg position-absolute w-100 top-0 start-0" style="z-index:0; pointer-events:none;">
+            <svg width="100%" height="220" viewBox="0 0 1440 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="720" cy="110" rx="700" ry="90" fill="#b3d8fd" fill-opacity="0.18"/>
+                <ellipse cx="300" cy="60" rx="200" ry="40" fill="#3fa7f4" fill-opacity="0.10"/>
+                <ellipse cx="1200" cy="160" rx="180" ry="30" fill="#22304a" fill-opacity="0.07"/>
+            </svg>
+        </div>
+        <div class="container position-relative" style="z-index:1;">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold mb-2 smart-title">Contact Us</h1>
+                <div class="smart-divider mx-auto mb-2"></div>
+                <p class="smart-subtitle text-muted mb-0">We're here to help. Please fill out the form or reach us directly using the information below.</p>
+            </div>
+            <div class="row g-5 justify-content-center align-items-stretch">
+                <div class="col-lg-6 animate-fade-in">
+                    <div class="smart-card p-4 h-100">
+                        <form id="contactForm" class="needs-validation" novalidate autocomplete="off">
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="name" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="name" required>
-                                    <div class="invalid-feedback">
-                                        Please enter your name.
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+                                        <label for="name">Full Name</label>
+                                        <div class="invalid-feedback">Please enter your name.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address.
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                                        <label for="email">Email Address</label>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="subject" class="form-label">Subject</label>
-                                    <input type="text" class="form-control" id="subject" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a subject.
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                                        <label for="subject">Subject</label>
+                                        <div class="invalid-feedback">Please enter a subject.</div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please enter your message.
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" id="message" placeholder="Message" style="height: 120px;" required></textarea>
+                                        <label for="message">Message</label>
+                                        <div class="invalid-feedback">Please enter your message.</div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-smart w-100 py-2" type="submit">
                                         <i class="fas fa-paper-plane me-2"></i>Send Message
                                     </button>
                                 </div>
@@ -92,68 +175,43 @@
                         </form>
                     </div>
                 </div>
-
-                <!-- Office Locations -->
-                <h2 class="text-center mb-4">Our Offices</h2>
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                    Head Office
-                                </h5>
-                                <p class="card-text">
-                                    70/D, Purana partan<br>
-                                    Dhaka, Bangladesh
-                                </p>
-                                <p class="card-text">
-                                    <i class="fas fa-phone me-2"></i>+8801650294202<br>
-                                    <i class="fas fa-phone me-2"></i>+8809638491460<br>
-                                    <i class="fas fa-envelope me-2"></i>Imonhossin490@gmail.com
-                                </p>
+                <div class="col-lg-5 animate-fade-in">
+                    <div class="smart-card p-4 h-100 d-flex flex-column justify-content-center">
+                        <div class="mb-4 d-flex align-items-center">
+                            <div class="smart-icon me-3"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <div class="fw-bold">Head Office</div>
+                                <div class="text-muted small">70/D, Purana Paltan, Dhaka, Bangladesh</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                    International Office
-                                </h5>
-                                <p class="card-text">
-                                    456 Global Avenue<br>
-                                    Financial District<br>
-                                    Dubai, UAE<br>
-                                    United Arab Emirates
-                                </p>
-                                <p class="card-text">
-                                    <i class="fas fa-phone me-2"></i>+971 4 123 4567<br>
-                                    <i class="fas fa-envelope me-2"></i>dubai@visaportal.com
-                                </p>
+                        <div class="mb-4 d-flex align-items-center">
+                            <div class="smart-icon me-3"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <div class="fw-bold">Phone</div>
+                                <div class="text-muted small">+8801650294202<br>+8809638491460</div>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-center">
+                            <div class="smart-icon me-3"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <div class="fw-bold">Email</div>
+                                <div class="text-muted small">Imonhossin490@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="smart-icon me-3"><i class="fas fa-globe"></i></div>
+                            <div>
+                                <div class="fw-bold">International Office</div>
+                                <div class="text-muted small">456 Global Avenue, Financial District, Dubai, UAE<br>+971 4 123 4567<br>dubai@visaportal.com</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Stylish Contact Info Section -->
-                <div class="card mt-5">
-                    <div class="card-body text-center">
-                        <h2 class="card-title mb-3">Contact Us Directly</h2>
-                        <p style="font-size:1.1rem;">
-                            <span style="font-size:1.3em;">📞</span> <b>+8801650294202</b><br>
-                            <span style="font-size:1.3em;">📞</span> <b>+8809638491460</b><br>
-                            <span style="font-size:1.3em;">📧</span> <b>Imonhossin490@gmail.com</b><br>
-                            <span style="font-size:1.3em;">📍</span> <b>70/D, Purana partan, Dhaka, Bangladesh</b>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Section -->
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h2 class="card-title mb-4">Frequently Asked Questions</h2>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto animate-fade-in">
+                    <div class="smart-card p-4">
+                        <h2 class="h5 fw-bold mb-4 text-primary">Frequently Asked Questions</h2>
                         <div class="accordion" id="faqAccordion">
                             <div class="accordion-item">
                                 <h3 class="accordion-header">
@@ -196,7 +254,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-5">
@@ -220,10 +278,10 @@
                 <div class="col-md-4">
                     <h5>Contact Info</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i>+8801650294202</li>
-                        <li><i class="fas fa-phone me-2"></i>+8809638491460</li>
-                        <li><i class="fas fa-envelope me-2"></i>Imonhossin490@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt me-2"></i>70/D, Purana partan, Dhaka, Bangladesh</li>
+                        <li><span style='font-size:1.2em;'>📞</span> <b>+8801650294202</b></li>
+                        <li><span style='font-size:1.2em;'>📞</span> <b>+8809638491460</b></li>
+                        <li><span style='font-size:1.2em;'>📧</span> <b>Imonhossin490@gmail.com</b></li>
+                        <li><span style='font-size:1.2em;'>📍</span> <b>70/D, Purana Paltan, Dhaka, Bangladesh</b></li>
                     </ul>
                 </div>
             </div>

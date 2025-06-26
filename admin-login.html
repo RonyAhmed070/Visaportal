@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Visa Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Admin login for Visa Portal.">
     <style>
         :root {
             --primary-color: #2563eb;
@@ -236,31 +238,41 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
-                <img src="images/logo.png" alt="Logo" class="mb-4">
+                <i class="fas fa-passport fa-4x mb-4 text-primary"></i>
                 <h1>Admin Login</h1>
                 <p>Access the visa portal management system</p>
             </div>
 
             <div class="alert" id="errorAlert" role="alert">
                 <i class="fas fa-exclamation-circle"></i>
-                Invalid credentials. Please try again.
+                <span id="errorMessage"></span>
             </div>
 
-            <form id="loginForm" onsubmit="return handleLogin(event)">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+            <form id="loginForm" onsubmit="return validateForm(event)">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                     <label for="username">Username</label>
                 </div>
-                <div class="form-floating position-relative">
-                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <div class="form-floating mb-4 position-relative">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" 
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                           title="Password must be at least 8 characters long and include uppercase, lowercase, number and special character"
+                           required>
                     <label for="password">Password</label>
                     <span class="password-toggle" onclick="togglePassword()">
-                        <i class="fas fa-eye"></i>
+                        <i class="far fa-eye" id="toggleIcon"></i>
                     </span>
                 </div>
-                <button type="submit" class="btn btn-primary btn-login">
-                    <span class="d-none d-md-inline">Sign In</span>
-                    <i class="fas fa-sign-in-alt d-md-none"></i>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-login">
+                    <span id="loginText">Login</span>
+                    <span id="loadingSpinner" class="d-none">
+                        <i class="fas fa-spinner fa-spin"></i> Loading...
+                    </span>
                 </button>
             </form>
 
@@ -280,47 +292,93 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        function handleLogin(event) {
+        function validateForm(event) {
             event.preventDefault();
+            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const errorAlert = document.getElementById('errorAlert');
-            const loginButton = document.querySelector('.btn-login');
+            const errorMessage = document.getElementById('errorMessage');
+            const loginText = document.getElementById('loginText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
             
-            // Disable button and show loading state
-            loginButton.disabled = true;
-            loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
-
-            // Send login request to backend
+            // Reset error state
+            errorAlert.style.display = 'none';
+            
+            // Validate username
+            if (username.length < 4) {
+                showError('Username must be at least 4 characters long');
+                return false;
+            }
+            
+            // Validate password
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                showError('Password must meet all requirements');
+                return false;
+            }
+            
+            // Show loading state
+            loginText.classList.add('d-none');
+            loadingSpinner.classList.remove('d-none');
+            
+            // Simulate API call with rate limiting
+            if (isRateLimited()) {
+                showError('Too many login attempts. Please try again later.');
+                resetLoadingState();
+                return false;
+            }
+            
+            // Submit the form
             fetch('/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
+                headers: {
+                    'Content-Type': 'application/json',
+                    'CSRF-Token': document.querySelector('[name="_csrf"]').value
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    rememberMe: document.getElementById('rememberMe').checked
+                })
             })
-            .then(res => res.json())
+            .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.href = '/admin-dashboard';
+                    window.location.href = 'admin-dashboard.html';
                 } else {
-                    errorAlert.style.display = 'block';
-                    loginButton.disabled = false;
-                    loginButton.innerHTML = '<span class="d-none d-md-inline">Sign In</span><i class="fas fa-sign-in-alt d-md-none"></i>';
+                    showError(data.error || 'Invalid credentials');
+                    resetLoadingState();
                 }
             })
-            .catch(() => {
-                errorAlert.style.display = 'block';
-                loginButton.disabled = false;
-                loginButton.innerHTML = '<span class="d-none d-md-inline">Sign In</span><i class="fas fa-sign-in-alt d-md-none"></i>';
+            .catch(error => {
+                showError('An error occurred. Please try again.');
+                resetLoadingState();
             });
-
+            
             return false;
+        }
+
+        function showError(message) {
+            const errorAlert = document.getElementById('errorAlert');
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorAlert.style.display = 'block';
+        }
+
+        function resetLoadingState() {
+            const loginText = document.getElementById('loginText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            loginText.classList.remove('d-none');
+            loadingSpinner.classList.add('d-none');
         }
 
         function togglePassword() {
             const passwordInput = document.getElementById('password');
-            const toggleIcon = document.querySelector('.password-toggle i');
+            const toggleIcon = document.getElementById('toggleIcon');
             
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
@@ -331,6 +389,26 @@
                 toggleIcon.classList.remove('fa-eye-slash');
                 toggleIcon.classList.add('fa-eye');
             }
+        }
+
+        // Rate limiting implementation
+        const loginAttempts = {
+            count: 0,
+            lastAttempt: 0
+        };
+
+        function isRateLimited() {
+            const now = Date.now();
+            const timeWindow = 15 * 60 * 1000; // 15 minutes
+            
+            if (now - loginAttempts.lastAttempt > timeWindow) {
+                loginAttempts.count = 0;
+            }
+            
+            loginAttempts.count++;
+            loginAttempts.lastAttempt = now;
+            
+            return loginAttempts.count > 5;
         }
 
         function handleForgotPassword() {
